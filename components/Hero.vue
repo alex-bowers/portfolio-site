@@ -1,6 +1,7 @@
 <template>
     <section class="hero">
         <div class="hero--message">
+            <!-- eslint-disable-next-line vue/no-v-html -->
             <h1 v-html="introduction"></h1>
         </div>
     </section>

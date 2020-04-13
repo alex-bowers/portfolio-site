@@ -58,6 +58,7 @@ export default {
     display: flex;
     flex-direction: column;
     color: $secondary-colour;
+    font-size: 1.125rem;
 }
 
 .about-me--content {
@@ -78,7 +79,7 @@ export default {
     margin-bottom: 1rem;
     .about-me--image--me {
         position: relative;
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
         img {
             position: relative;
             width: 100%;
