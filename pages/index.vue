@@ -2,6 +2,7 @@
     <div class="container">
         <hero></hero>
         <about-me></about-me>
+        <dayJob></dayJob>
         <happy-dev></happy-dev>
         <site-footer></site-footer>
     </div>
@@ -9,16 +10,18 @@
 
 <script>
 import AboutMe from '~/components/AboutMe.vue'
-import SiteFooter from '~/components/Footer.vue'
+import DayJob from '~/components/DayJob.vue'
 import HappyDev from '~/components/HappyDev.vue'
 import Hero from '~/components/Hero.vue'
+import SiteFooter from '~/components/Footer.vue'
 
 export default {
     components: {
         AboutMe,
-        SiteFooter,
+        DayJob,
         HappyDev,
-        Hero
+        Hero,
+        SiteFooter
     }
 }
 </script>
