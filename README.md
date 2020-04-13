@@ -1,5 +1,7 @@
 # My Website
 
+> alexbowers.co.uk
+
 ### v1.0.0
 I wanted to set myself a challenge. One day to design and build a website.
 
@@ -9,4 +11,4 @@ I started on Figma. Creating 7 designs. None of them will be the final design bu
 
 [![Image from Gyazo](https://i.gyazo.com/7a03b42c3d226e79608e278b5897fe53.png)](https://gyazo.com/7a03b42c3d226e79608e278b5897fe53)
 
-I then used Nuxt to create the site.
+I then used Nuxt to create the site and Netlify to deploy.
