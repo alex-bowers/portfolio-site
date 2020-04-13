@@ -13,7 +13,9 @@
                         We discussed my stammer and how that has impacted my health and both my personal and professional life.
                     </p>
                 </div>
-                <a :href="episodeLink" class="episode-button">Find Episode</a>
+                <a :href="episodeLink" target="_blank" class="episode-button">
+                    Find Episode
+                </a>
             </div>
         </div>
     </div>
