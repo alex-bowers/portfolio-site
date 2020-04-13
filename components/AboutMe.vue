@@ -132,7 +132,7 @@ export default {
         flex-direction: row;
         align-items: center;
         justify-content: space-evenly;
-        height: 100vh;
+        padding: 5rem 1rem 10rem 1rem;
     }
 
     .about-me--content {
