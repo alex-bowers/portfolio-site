@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import SocialLinks from './Common/Social.vue'
+import SocialLinks from '~/components/Common/Social.vue'
 
 export default {
     components: {
