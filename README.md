@@ -1,22 +1,12 @@
-# portfolio-website
+# My Website
 
-> My Portfolio
+### v1.0.0
+I wanted to set myself a challenge. One day to design and build a website.
 
-## Build Setup
+I had some time to kill on a bank holiday and I wanted to see what I could do in a few hours.
 
-```bash
-# install dependencies
-$ npm install
+I started on Figma. Creating 7 designs. None of them will be the final design but I thought I could code these within my set time frame.
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+[![Image from Gyazo](https://i.gyazo.com/7a03b42c3d226e79608e278b5897fe53.png)](https://gyazo.com/7a03b42c3d226e79608e278b5897fe53)
 
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+I then used Nuxt to create the site.
