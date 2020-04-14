@@ -27,6 +27,7 @@ export default {
     position: relative;
     height: 100vh;
     width: 100vw;
+    z-index: 1;
 }
 
 .hero--message {

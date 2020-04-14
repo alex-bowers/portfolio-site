@@ -38,10 +38,12 @@ export default {
 .happy-dev {
     display: flex;
     justify-content: center;
+    position: relative;
     background-color: $secondary-colour;
     color: $white;
     font-size: 1rem;
     padding: 4rem 3rem;
+    z-index: 1;
 }
 
 .happy-dev--container {

@@ -57,9 +57,11 @@ export default {
 .about-me {
     display: flex;
     flex-direction: column;
+    position: relative;
     background-color: $white;
     color: $secondary-colour;
     font-size: 1.125rem;
+    z-index: 1;
 }
 
 .about-me--content {
