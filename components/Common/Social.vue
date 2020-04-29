@@ -4,36 +4,39 @@
             :class="{ 'no-end-padding': $props.hasNoPaddingOnEnds }"
             :href="profiles.linkedin"
             :style="{ padding: $props.padding }"
+            aria-label="LinkedIn"
             rel="noopener"
             target="_blank"
         >
             <linkedin-icon
                 :is-on-primary-colour="$props.isOnPrimaryColour"
-                title="Alex's LinkedIn Link"
+                title="Alex's LinkedIn Icon"
             ></linkedin-icon>
         </a>
         <a
             :class="{ 'no-end-padding': $props.hasNoPaddingOnEnds }"
             :href="profiles.github"
             :style="{ padding: $props.padding }"
+            aria-label="GitHub"
             rel="noopener"
             target="_blank"
         >
             <github-icon
                 :is-on-primary-colour="$props.isOnPrimaryColour"
-                title="Alex's GitHub Link"
+                title="Alex's GitHub Icon"
             ></github-icon>
         </a>
         <a
             :class="{ 'no-end-padding': $props.hasNoPaddingOnEnds }"
             :href="profiles.twitter"
             :style="{ padding: $props.padding }"
+            aria-label="Twitter"
             rel="noopener"
             target="_blank"
         >
             <twitter-icon
                 :is-on-primary-colour="$props.isOnPrimaryColour"
-                title="Alex's Twitter Link"
+                title="Alex's Twitter Icon"
             ></twitter-icon>
         </a>
     </div>

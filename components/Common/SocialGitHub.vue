@@ -8,8 +8,8 @@
         width="50"
         xmlns="http://www.w3.org/2000/svg"
     >
-        <title id="svgGithubTitle">{{ title }}</title>
-        <g clip-path="url(#clip0)">
+        <title>{{ title }}</title>
+        <g clip-path="url(.clip0)">
             <rect
                 x="6"
                 y="7.72302"
@@ -24,7 +24,7 @@
             />
         </g>
         <defs>
-            <clipPath id="clip0">
+            <clipPath class="clip0">
                 <path d="M0 0.723022H50V50.723H0V0.723022Z" fill="white" />
             </clipPath>
         </defs>

@@ -15,6 +15,7 @@
                 </div>
                 <a
                     :href="episodeLink"
+                    aria-label="Happy Dev"
                     class="episode-button"
                     rel="noopener"
                     target="_blank"
