@@ -7,7 +7,10 @@
             rel="noopener"
             target="_blank"
         >
-            <img src="../../assets/images/linkedin.svg" alt="LinkedIn Link" />
+            <img
+                alt="Alex's LinkedIn Link"
+                src="../../assets/images/linkedin.svg"
+            />
         </a>
         <a
             :class="{ 'no-end-padding': $props.hasNoPaddingOnEnds }"
@@ -16,7 +19,10 @@
             rel="noopener"
             target="_blank"
         >
-            <img src="../../assets/images/github.svg" alt="LinkedIn Link" />
+            <img
+                alt="Alex's GitHub Link"
+                src="../../assets/images/github.svg"
+            />
         </a>
         <a
             :class="{ 'no-end-padding': $props.hasNoPaddingOnEnds }"
@@ -25,7 +31,10 @@
             rel="noopener"
             target="_blank"
         >
-            <img src="../../assets/images/twitter.svg" alt="LinkedIn Link" />
+            <img
+                alt="Alex's Twitter Link"
+                src="../../assets/images/twitter.svg"
+            />
         </a>
     </div>
 </template>
