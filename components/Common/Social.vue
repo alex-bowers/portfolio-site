@@ -4,6 +4,7 @@
             :class="{ 'no-end-padding': $props.hasNoPaddingOnEnds }"
             :href="profiles.linkedin"
             :style="{ padding: $props.padding }"
+            rel="noopener"
             target="_blank"
         >
             <img src="../../assets/images/linkedin.svg" alt="LinkedIn Link" />
@@ -12,6 +13,7 @@
             :class="{ 'no-end-padding': $props.hasNoPaddingOnEnds }"
             :href="profiles.github"
             :style="{ padding: $props.padding }"
+            rel="noopener"
             target="_blank"
         >
             <img src="../../assets/images/github.svg" alt="LinkedIn Link" />
@@ -20,6 +22,7 @@
             :class="{ 'no-end-padding': $props.hasNoPaddingOnEnds }"
             :href="profiles.twitter"
             :style="{ padding: $props.padding }"
+            rel="noopener"
             target="_blank"
         >
             <img src="../../assets/images/twitter.svg" alt="LinkedIn Link" />
