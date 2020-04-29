@@ -1,10 +1,15 @@
+require('dotenv').config()
+
 export default {
     mode: 'universal',
     /*
      ** Headers of the page
      */
     head: {
-        title: process.env.npm_package_name || '',
+        htmlAttrs: {
+            lang: 'en'
+        },
+        title: process.env.TITLE || '',
         meta: [
             { charset: 'utf-8' },
             {
@@ -14,7 +19,7 @@ export default {
             {
                 hid: 'description',
                 name: 'description',
-                content: process.env.npm_package_description || ''
+                content: process.env.DESCRIPTION || ''
             }
         ],
         link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
@@ -35,6 +40,8 @@ export default {
      ** Nuxt.js dev-modules
      */
     buildModules: [
+        // https://github.com/nuxt-community/dotenv-module
+        '@nuxtjs/dotenv',
         // Doc: https://github.com/nuxt-community/eslint-module
         '@nuxtjs/eslint-module'
     ],
