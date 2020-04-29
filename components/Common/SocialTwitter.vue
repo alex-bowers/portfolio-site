@@ -8,7 +8,7 @@
         width="50"
         xmlns="http://www.w3.org/2000/svg"
     >
-        <title id="svgTitle">{{ title }}</title>
+        <title id="svgTwitterTitle">{{ title }}</title>
         <path
             d="M43.75 50H6.25C2.8 50 0 47.2 0 43.75V6.25C0 2.8 2.8 0 6.25 0H43.75C47.2 0 50 2.8 50 6.25V43.75C50 47.2 47.2 50 43.75 50Z"
             class="icon-background"

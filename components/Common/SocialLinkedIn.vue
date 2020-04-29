@@ -8,7 +8,7 @@
         width="50"
         xmlns="http://www.w3.org/2000/svg"
     >
-        <title id="svgTitle">{{ title }}</title>
+        <title id="svgLinkedTitle">{{ title }}</title>
         <path
             fill-rule="evenodd"
             clip-rule="evenodd"

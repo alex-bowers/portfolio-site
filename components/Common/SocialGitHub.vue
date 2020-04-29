@@ -8,7 +8,7 @@
         width="50"
         xmlns="http://www.w3.org/2000/svg"
     >
-        <title id="svgTitle">{{ title }}</title>
+        <title id="svgGithubTitle">{{ title }}</title>
         <g clip-path="url(#clip0)">
             <rect
                 x="6"
