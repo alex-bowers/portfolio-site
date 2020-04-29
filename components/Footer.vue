@@ -1,6 +1,6 @@
 <template>
     <footer class="footer">
-        <social-links></social-links>
+        <social-links :is-on-primary-colour="true"></social-links>
     </footer>
 </template>
 

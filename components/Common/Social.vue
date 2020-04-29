@@ -7,10 +7,10 @@
             rel="noopener"
             target="_blank"
         >
-            <img
-                alt="Alex's LinkedIn Link"
-                src="../../assets/images/linkedin.svg"
-            />
+            <linkedin-icon
+                :is-on-primary-colour="$props.isOnPrimaryColour"
+                title="Alex's LinkedIn Link"
+            ></linkedin-icon>
         </a>
         <a
             :class="{ 'no-end-padding': $props.hasNoPaddingOnEnds }"
@@ -19,10 +19,10 @@
             rel="noopener"
             target="_blank"
         >
-            <img
-                alt="Alex's GitHub Link"
-                src="../../assets/images/github.svg"
-            />
+            <github-icon
+                :is-on-primary-colour="$props.isOnPrimaryColour"
+                title="Alex's GitHub Link"
+            ></github-icon>
         </a>
         <a
             :class="{ 'no-end-padding': $props.hasNoPaddingOnEnds }"
@@ -31,18 +31,31 @@
             rel="noopener"
             target="_blank"
         >
-            <img
-                alt="Alex's Twitter Link"
-                src="../../assets/images/twitter.svg"
-            />
+            <twitter-icon
+                :is-on-primary-colour="$props.isOnPrimaryColour"
+                title="Alex's Twitter Link"
+            ></twitter-icon>
         </a>
     </div>
 </template>
 
 <script>
+import GithubIcon from './SocialGitHub.vue'
+import LinkedinIcon from './SocialLinkedIn.vue'
+import TwitterIcon from './SocialTwitter.vue'
+
 export default {
+    components: {
+        GithubIcon,
+        LinkedinIcon,
+        TwitterIcon
+    },
     props: {
         hasNoPaddingOnEnds: {
+            default: false,
+            type: Boolean
+        },
+        isOnPrimaryColour: {
             default: false,
             type: Boolean
         },
