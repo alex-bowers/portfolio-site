@@ -128,7 +128,7 @@ export default {
             left: -10px;
             right: 0;
             bottom: 0;
-            background-color: $primary-colour;
+            background-color: $secondary-colour;
         }
     }
     .day-job-images--one {
