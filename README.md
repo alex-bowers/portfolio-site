@@ -13,7 +13,7 @@ I started on Figma. Creating 7 designs. None of them will be the final design bu
 
 I then used Nuxt to create the site and Netlify to deploy.
 
-### v1.1.0
+### v1.1.2
 I had another afternoon free and I wanted to improve my Lighthouse Audit scores.
 
 These score are calculated with: 
@@ -23,4 +23,4 @@ Network: Fast 3G
 CPU: 4x slowdown
 ```
 
-[![Image from Gyazo](https://i.gyazo.com/bfb874ce2dd6ffc46d9932be28d7085b.png)](https://gyazo.com/bfb874ce2dd6ffc46d9932be28d7085b)
+[![Image from Gyazo](https://i.gyazo.com/5624cf5d3805e3861d1b96608c11fbcc.png)](https://gyazo.com/5624cf5d3805e3861d1b96608c11fbcc)
