@@ -112,7 +112,6 @@ export default {
     .about-me {
         padding: 1rem;
     }
-
     .about-me--content {
         padding: 0rem;
     }
@@ -133,17 +132,16 @@ export default {
     .about-me {
         flex-direction: row;
         align-items: center;
-        justify-content: space-evenly;
-        padding: 5rem 1rem 10rem 1rem;
+        justify-content: space-around;
+        padding: 10rem 2rem 15rem 2rem;
     }
-
     .about-me--content {
         order: 1;
         .about-me--content--statement {
             margin-bottom: 4.6875rem;
-            max-width: 400px;
+            max-width: 550px;
             h2 {
-                font-size: 3rem;
+                font-size: 4rem;
             }
         }
         .about-me--content--list {
@@ -154,6 +152,31 @@ export default {
         align-items: flex-end;
         margin-bottom: 0;
         order: 2;
+    }
+}
+
+@media (min-width: $breakpoint-xlarge) {
+    .about-me--content {
+        .about-me--content--statement {
+            h2 {
+                font-size: 4.5rem;
+            }
+        }
+    }
+}
+
+@media (min-width: $breakpoint-xxlarge) {
+    .about-me {
+        justify-content: center;
+    }
+
+    .about-me--content {
+        .about-me--content--statement {
+            margin-right: 10rem;
+            h2 {
+                font-size: 5rem;
+            }
+        }
     }
 }
 </style>
