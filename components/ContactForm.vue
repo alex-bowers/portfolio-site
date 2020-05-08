@@ -1,6 +1,6 @@
 <template>
     <div class="contact-form--container">
-        <div v-if="hasEmailSent" class="contact-form--result">
+        <div v-if="hasUserTriedToSentEmail" class="contact-form--result">
             <div v-if="emailSentStatus === 'success'">
                 <p><strong>Thank you for contacting me.</strong></p>
                 <p>I will reply as soon as I can.</p>
@@ -18,7 +18,7 @@
             </div>
         </div>
         <form
-            v-if="!hasEmailSent"
+            v-if="!hasUserTriedToSentEmail"
             class="contact-form"
             name="contact"
             @submit.prevent="sendEmail"
@@ -65,10 +65,11 @@
             </div>
             <button
                 class="contact-button"
+                :class="{ 'contact-button--loading': isEmailSending }"
                 :disabled="isEmailSending"
                 type="submit"
             >
-                Send
+                {{ buttonText }}
             </button>
         </form>
     </div>
@@ -91,11 +92,14 @@ export default {
                 message: '',
                 name: ''
             },
-            hasEmailSent: false,
+            hasUserTriedToSentEmail: false,
             isEmailSending: false
         }
     },
     computed: {
+        buttonText() {
+            return this.isEmailSending ? 'Email is sending' : 'Send'
+        },
         enviromentVariables() {
             return {
                 service: process.env.EMAIL_SERVICE,
@@ -116,10 +120,12 @@ export default {
                 )
                 .then(
                     (result) => {
+                        this.hasUserTriedToSentEmail = true
                         this.emailSentStatus = 'success'
                     },
                     // eslint-disable-next-line handle-callback-err
                     (error) => {
+                        this.hasUserTriedToSentEmail = true
                         this.emailSentStatus = 'failed'
                     }
                 )
@@ -205,6 +211,12 @@ button {
     &:hover {
         border-color: $secondary-colour;
         color: $secondary-colour;
+    }
+    &.contact-button--loading {
+        &:hover {
+            border-color: $white;
+            color: $white;
+        }
     }
 }
 </style>
