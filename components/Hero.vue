@@ -1,8 +1,8 @@
 <template>
     <section class="hero">
         <div class="hero--message">
-            <!-- eslint-disable-next-line vue/no-v-html -->
-            <h1 v-html="introduction"></h1>
+            <h1>Hello. I'm Alex Bowers</h1>
+            <div id="heroText" class="hero--message--text"></div>
         </div>
     </section>
 </template>
@@ -11,7 +11,62 @@
 export default {
     data() {
         return {
-            introduction: "Hello.<br>I'm Alex Bowers."
+            currentRowIndex: 0,
+            currentRowStringLength: 6,
+            finishedRowIndex: 0,
+            headerRows: ['Hello.', "I'm Alex Bowers."],
+            lastRowContent: '',
+            nextCharacterSpeed: 100,
+            scrollTextAt: 4,
+            textPosition: 0
+        }
+    },
+    mounted() {
+        this.setHeroText()
+    },
+    methods: {
+        setHeroText() {
+            const headerElement = document.getElementById('heroText')
+
+            this.lastRowContent = ' '
+            this.currentRowIndex = Math.max(
+                0,
+                this.finishedRowIndex - this.scrollTextAt
+            )
+
+            while (this.currentRowIndex < this.finishedRowIndex) {
+                this.lastRowContent +=
+                    this.headerRows[this.currentRowIndex++] + '<br />'
+            }
+
+            headerElement.innerHTML =
+                this.lastRowContent +
+                this.headerRows[this.finishedRowIndex].substring(
+                    0,
+                    this.textPosition
+                )
+
+            if (this.textPosition < 16) {
+                // We don't want the new character effect once all the text has been added.
+                headerElement.innerHTML += '|'
+            }
+
+            if (this.textPosition++ === this.currentRowStringLength) {
+                this.textPosition = 0
+                this.finishedRowIndex++
+                if (this.finishedRowIndex !== this.headerRows.length) {
+                    this.currentRowStringLength = this.headerRows[
+                        this.finishedRowIndex
+                    ].length
+                    setTimeout(() => {
+                        this.setHeroText()
+                    }, 500)
+                }
+            } else {
+                setTimeout(() => {
+                    this.setHeroText()
+                }, this.nextCharacterSpeed)
+            }
         }
     }
 }
@@ -22,27 +77,38 @@ export default {
 @import '~/assets/scss/settings.scss';
 
 .hero {
+    display: flex;
+    align-items: flex-end;
+    position: relative;
     background-color: $primary-colour;
     color: $white;
-    position: relative;
     height: 100vh;
     width: 100vw;
     z-index: 1;
 }
 
 .hero--message {
-    position: absolute;
-    bottom: 10%;
-    padding: 1rem;
+    margin: 1rem;
+    .hero--message--text {
+        display: block;
+        min-height: 250px;
+        font-size: 2.5rem;
+        min-height: 100px;
+    }
     h1 {
-        font-size: 4rem;
-        margin: 0;
+        display: none;
     }
 }
 
 @media (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
     .hero {
         height: 50vh;
+    }
+    .hero--message {
+        .hero--message--text {
+            font-size: 4rem;
+            min-height: 160px;
+        }
     }
 }
 
@@ -51,11 +117,10 @@ export default {
         height: 100vh;
     }
     .hero--message {
-        position: absolute;
-        bottom: 10%;
-        left: 10%;
-        h1 {
+        margin: 10%;
+        .hero--message--text {
             font-size: 6rem;
+            min-height: 240px;
         }
     }
 }
