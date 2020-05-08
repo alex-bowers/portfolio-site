@@ -1,7 +1,7 @@
 <template>
     <section class="about-me content-container">
         <div class="about-me--image">
-            <div class="about-me--image--me">
+            <div class="about-me--image--with-background">
                 <img src="../assets/images/profile.jpg" alt="Profile Picture" />
                 <div class="image-background--secondary left-align"></div>
             </div>
@@ -64,7 +64,7 @@ export default {
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
-    .about-me--image--me {
+    .about-me--image--with-background {
         position: relative;
         margin-bottom: 1.25rem;
         img {
@@ -73,6 +73,7 @@ export default {
             z-index: 1;
         }
         .image-background--secondary {
+            display: none;
             z-index: 0;
         }
     }
@@ -91,12 +92,9 @@ export default {
     }
     .about-me--image {
         margin-bottom: 3rem;
-        .about-me--image--me {
+        .about-me--image--with-background {
             img {
                 border-radius: 0.625rem;
-            }
-            .image-background--secondary {
-                display: block;
             }
         }
     }
@@ -120,6 +118,11 @@ export default {
         align-items: flex-end;
         margin-bottom: 0;
         order: 2;
+        .about-me--image--with-background {
+            .image-background--secondary {
+                display: block;
+            }
+        }
     }
 }
 
