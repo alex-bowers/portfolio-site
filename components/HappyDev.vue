@@ -63,9 +63,8 @@ export default {
 }
 
 .happy-dev--content {
-    .happy-dev--content--text {
-        margin-bottom: 3rem;
-    }
+    display: flex;
+    flex-direction: column;
     .episode-button {
         background: transparent;
         border: 1px $white solid;
@@ -74,6 +73,7 @@ export default {
         font-size: 1rem;
         padding: 1rem 2rem;
         margin-top: 1rem;
+        text-align: center;
         &:hover {
             border-color: $primary-colour;
             color: $primary-colour;
@@ -92,6 +92,11 @@ export default {
             margin-bottom: 0;
             margin-right: 5rem;
             max-width: 250px;
+        }
+    }
+    .happy-dev--content {
+        .episode-button {
+            max-width: 150px;
         }
     }
 }
