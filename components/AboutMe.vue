@@ -3,7 +3,7 @@
         <div class="about-me--image">
             <div class="about-me--image--me">
                 <img src="../assets/images/profile.jpg" alt="Profile Picture" />
-                <div class="image-background--secondary"></div>
+                <div class="image-background--secondary left-align"></div>
             </div>
             <div class="about-me--image--social">
                 <social-links

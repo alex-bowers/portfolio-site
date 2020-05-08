@@ -28,14 +28,14 @@
                     src="../assets/images/warehouse.jpg"
                     alt="Caribbean Warehouse Screenshot"
                 />
-                <div class="image--background--secondary"></div>
+                <div class="image-background--secondary right-align"></div>
             </div>
             <div class="day-job-images--two">
                 <img
                     src="../assets/images/xclusivity.jpg"
                     alt="Xclusivity Screenshot"
                 />
-                <div class="image--background--secondary"></div>
+                <div class="image-background--secondary right-align"></div>
             </div>
         </div>
     </section>
@@ -112,7 +112,7 @@ export default {
         img {
             z-index: 1;
         }
-        .image--background--secondary {
+        .image-background--secondary {
             z-index: 0;
         }
     }
@@ -123,7 +123,7 @@ export default {
         img {
             z-index: 4;
         }
-        .image--background--secondary {
+        .image-background--secondary {
             z-index: 3;
         }
     }
