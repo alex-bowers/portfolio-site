@@ -151,7 +151,7 @@ export default {
     display: flex;
     flex-direction: column;
     color: $secondary-colour;
-    margin: 5rem 0;
+    margin-bottom: 5rem;
 }
 
 .contact-form--result {
@@ -160,7 +160,7 @@ export default {
     color: $white;
     padding: 2rem 1rem;
     border-radius: 5px;
-    margin: 5rem 0;
+    margin-bottom: 5rem;
 }
 
 .field-with-floating-input {

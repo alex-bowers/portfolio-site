@@ -19,16 +19,22 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/assets/scss/colours.scss';
+@import '~/assets/scss/settings.scss';
 
 .footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: sticky;
-    bottom: 0;
     background-color: $primary-colour;
-    padding: 2rem;
-    z-index: 0;
+    padding: 5rem 2rem;
+}
+
+@media (min-width: $breakpoint-large) {
+    .footer {
+        position: sticky;
+        bottom: 0;
+        z-index: 0;
+    }
 }
 </style>
