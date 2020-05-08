@@ -1,6 +1,10 @@
 @import '~/assets/scss/colours.scss';
 @import '~/assets/scss/settings.scss';
 
+.container {
+    overflow-x: hidden;
+}
+
 .content-container {
     display: flex;
     flex-direction: column;
