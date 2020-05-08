@@ -6,11 +6,11 @@
                 <p>I have worked at Blue Bay Travel since November 2012.</p>
                 <p>
                     <!-- eslint-disable-next-line prettier/prettier -->
-                    Myself and the rest of the development team are resonsibly for four customer facing websites and a number of internal web applications.
+                    I manage a small team of developers and we are responsible for four customer facing websites and a number of internal web applications.
                 </p>
                 <p>
                     <!-- eslint-disable-next-line prettier/prettier -->
-                    My focus is to improve the user experience. I design and develop new features where I have to concider both the customer and emploee journeys.
+                    I focus on improving the user experience and product performance on all of our projects. By designing and developing new features that concider both the customer and employee journeys.
                 </p>
             </div>
             <div class="day-job--content--stack">
@@ -88,11 +88,12 @@ export default {
     background-color: $white;
     color: $secondary-colour;
     font-size: 1.125rem;
-    padding: 1rem;
+    padding: 1rem 1rem 3rem 1rem;
     z-index: 1;
 }
 
 .day-job--content {
+    padding: 1rem;
     .day-job--content--text {
         h2 {
             font-size: 2rem;
@@ -132,8 +133,6 @@ export default {
         }
     }
     .day-job-images--one {
-        top: -100px;
-        left: -50px;
         img {
             z-index: 1;
         }
@@ -143,7 +142,7 @@ export default {
     }
     .day-job-images--two {
         position: absolute;
-        top: 100px;
+        top: 150px;
         right: -50px;
         img {
             z-index: 4;
@@ -158,8 +157,8 @@ export default {
     .day-job {
         flex-direction: row;
         align-items: center;
-        justify-content: space-evenly;
-        padding: 5rem 1rem 10rem 1rem;
+        justify-content: space-around;
+        padding: 0rem 2rem 24.375rem 2rem;
     }
 
     .day-job--content {
@@ -167,8 +166,7 @@ export default {
         .day-job--content--text {
             max-width: 400px;
             h2 {
-                font-size: 3rem;
-                margin: 0 0 0.5rem 0;
+                font-size: 4rem;
             }
         }
     }
@@ -176,6 +174,38 @@ export default {
     .day-job--images {
         display: block;
         order: 1;
+    }
+}
+
+@media (min-width: $breakpoint-xlarge) {
+    .day-job--content {
+        .day-job--content--text {
+            max-width: 500px;
+            h2 {
+                font-size: 4.5rem;
+            }
+        }
+    }
+    .day-job--images {
+        .day-job-images--two {
+            right: -100px;
+        }
+    }
+}
+
+@media (min-width: $breakpoint-xxlarge) {
+    .day-job {
+        justify-content: center;
+    }
+
+    .day-job--content {
+        margin-left: 15rem;
+        .day-job--content--text {
+            max-width: 550px;
+            h2 {
+                font-size: 5rem;
+            }
+        }
     }
 }
 </style>

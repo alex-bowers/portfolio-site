@@ -61,6 +61,7 @@ export default {
     background-color: $white;
     color: $secondary-colour;
     font-size: 1.125rem;
+    padding: 1rem;
     z-index: 1;
 }
 
@@ -112,9 +113,6 @@ export default {
     .about-me {
         padding: 1rem;
     }
-    .about-me--content {
-        padding: 0rem;
-    }
     .about-me--image {
         margin-bottom: 3rem;
         .about-me--image--me {
@@ -133,7 +131,7 @@ export default {
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
-        padding: 10rem 2rem 15rem 2rem;
+        padding: 15rem 2rem;
     }
     .about-me--content {
         order: 1;
