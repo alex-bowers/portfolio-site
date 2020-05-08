@@ -53,7 +53,7 @@ svg {
     &.reverse-colours {
         &:hover {
             .icon-background {
-                fill: #68adef;
+                fill: $tertiary-colour;
             }
         }
     }

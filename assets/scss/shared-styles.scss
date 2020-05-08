@@ -1,6 +1,18 @@
 @import '~/assets/scss/colours.scss';
 @import '~/assets/scss/settings.scss';
 
+.contact-button, .episode-button {
+    background: transparent;
+    border: 1px $white solid;
+    color: $white;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    text-align: center;
+    text-decoration: underline;
+}
+
 .container {
     overflow-x: hidden;
 }

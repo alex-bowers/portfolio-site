@@ -66,14 +66,6 @@ export default {
     display: flex;
     flex-direction: column;
     .episode-button {
-        background: transparent;
-        border: 1px $white solid;
-        color: $white;
-        cursor: pointer;
-        font-size: 1rem;
-        padding: 1rem 2rem;
-        margin-top: 1rem;
-        text-align: center;
         &:hover {
             border-color: $primary-colour;
             color: $primary-colour;

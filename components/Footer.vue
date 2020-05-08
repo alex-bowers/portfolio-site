@@ -1,14 +1,17 @@
 <template>
     <footer class="footer">
+        <contact-form></contact-form>
         <social-links :is-on-primary-colour="true"></social-links>
     </footer>
 </template>
 
 <script>
+import ContactForm from '~/components/ContactForm.vue'
 import SocialLinks from '~/components/Common/Social.vue'
 
 export default {
     components: {
+        ContactForm,
         SocialLinks
     }
 }
@@ -19,6 +22,7 @@ export default {
 
 .footer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: sticky;
