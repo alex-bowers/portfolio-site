@@ -1,9 +1,9 @@
 <template>
-    <section class="about-me">
+    <section class="about-me content-container">
         <div class="about-me--image">
             <div class="about-me--image--me">
                 <img src="../assets/images/profile.jpg" alt="Profile Picture" />
-                <div class="image--me--background"></div>
+                <div class="image-background--secondary"></div>
             </div>
             <div class="about-me--image--social">
                 <social-links
@@ -13,11 +13,11 @@
             </div>
         </div>
         <div class="about-me--content">
-            <div class="about-me--content--statement">
+            <div class="content-container--text">
                 <h2>I'm the Lead Developer at Blue Bay Travel.</h2>
                 <div>Located in Stoke-on-Trent, UK.</div>
             </div>
-            <div class="about-me--content--list">
+            <div class="content-container--list">
                 <h3>About me...</h3>
                 <ol>
                     <li v-for="(item, itemIndex) in list" :key="itemIndex">
@@ -54,25 +54,8 @@ export default {
 @import '~/assets/scss/colours.scss';
 @import '~/assets/scss/settings.scss';
 
-.about-me {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    background-color: $white;
-    color: $secondary-colour;
-    font-size: 1.125rem;
-    padding: 1rem;
-    z-index: 1;
-}
-
 .about-me--content {
     padding: 1rem;
-    .about-me--content--statement {
-        h2 {
-            font-size: 2rem;
-            margin: 0 0 0.5rem 0;
-        }
-    }
 }
 
 .about-me--image {
@@ -89,17 +72,7 @@ export default {
             width: 100%;
             z-index: 1;
         }
-        .image--me--background {
-            display: none;
-            border-radius: 0.625rem;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 10px;
-            left: 10px;
-            right: 0;
-            bottom: 0;
-            background-color: $secondary-colour;
+        .image-background--secondary {
             z-index: 0;
         }
     }
@@ -119,7 +92,7 @@ export default {
             img {
                 border-radius: 0.625rem;
             }
-            .image--me--background {
+            .image-background--secondary {
                 display: block;
             }
         }
@@ -128,21 +101,15 @@ export default {
 
 @media (min-width: $breakpoint-large) {
     .about-me {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
         padding: 15rem 2rem;
     }
     .about-me--content {
         order: 1;
-        .about-me--content--statement {
+        .content-container--text {
             margin-bottom: 4.6875rem;
             max-width: 550px;
-            h2 {
-                font-size: 4rem;
-            }
         }
-        .about-me--content--list {
+        .content-container--list {
             margin-bottom: 3.4375rem;
         }
     }
@@ -153,27 +120,10 @@ export default {
     }
 }
 
-@media (min-width: $breakpoint-xlarge) {
-    .about-me--content {
-        .about-me--content--statement {
-            h2 {
-                font-size: 4.5rem;
-            }
-        }
-    }
-}
-
 @media (min-width: $breakpoint-xxlarge) {
-    .about-me {
-        justify-content: center;
-    }
-
     .about-me--content {
-        .about-me--content--statement {
+        .content-container--text {
             margin-right: 10rem;
-            h2 {
-                font-size: 5rem;
-            }
         }
     }
 }

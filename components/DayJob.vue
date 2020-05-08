@@ -1,7 +1,7 @@
 <template>
-    <section class="day-job">
+    <section class="day-job content-container">
         <div class="day-job--content">
-            <div class="day-job--content--text">
+            <div class="content-container--text">
                 <h2>Day Job.</h2>
                 <p>I have worked at Blue Bay Travel since November 2012.</p>
                 <p>
@@ -13,7 +13,7 @@
                     I focus on improving the user experience and product performance on all of our projects. By designing and developing new features that concider both the customer and employee journeys.
                 </p>
             </div>
-            <div class="day-job--content--stack">
+            <div class="content-container--list">
                 <h3>Typical Stack...</h3>
                 <ul>
                     <li v-for="(items, type) in stack" :key="type">
@@ -28,14 +28,14 @@
                     src="../assets/images/warehouse.jpg"
                     alt="Caribbean Warehouse Screenshot"
                 />
-                <div class="image--background"></div>
+                <div class="image--background--secondary"></div>
             </div>
             <div class="day-job-images--two">
                 <img
                     src="../assets/images/xclusivity.jpg"
                     alt="Xclusivity Screenshot"
                 />
-                <div class="image--background"></div>
+                <div class="image--background--secondary"></div>
             </div>
         </div>
     </section>
@@ -82,25 +82,12 @@ export default {
 @import '~/assets/scss/settings.scss';
 
 .day-job {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    background-color: $white;
-    color: $secondary-colour;
-    font-size: 1.125rem;
     padding: 1rem 1rem 3rem 1rem;
-    z-index: 1;
 }
 
 .day-job--content {
     padding: 1rem;
-    .day-job--content--text {
-        h2 {
-            font-size: 2rem;
-            margin: 0 0 0.5rem 0;
-        }
-    }
-    .day-job--content--stack {
+    .content-container--list {
         ul {
             list-style: none;
             padding: 0;
@@ -120,23 +107,12 @@ export default {
             border-radius: 0.625rem;
             width: 100%;
         }
-        .image--background {
-            border-radius: 0.625rem;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 10px;
-            left: -10px;
-            right: 0;
-            bottom: 0;
-            background-color: $secondary-colour;
-        }
     }
     .day-job-images--one {
         img {
             z-index: 1;
         }
-        .image--background {
+        .image--background--secondary {
             z-index: 0;
         }
     }
@@ -147,7 +123,7 @@ export default {
         img {
             z-index: 4;
         }
-        .image--background {
+        .image--background--secondary {
             z-index: 3;
         }
     }
@@ -155,19 +131,13 @@ export default {
 
 @media (min-width: $breakpoint-large) {
     .day-job {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
         padding: 0rem 2rem 24.375rem 2rem;
     }
 
     .day-job--content {
         order: 2;
-        .day-job--content--text {
+        .content-container--text {
             max-width: 400px;
-            h2 {
-                font-size: 4rem;
-            }
         }
     }
 
@@ -179,11 +149,8 @@ export default {
 
 @media (min-width: $breakpoint-xlarge) {
     .day-job--content {
-        .day-job--content--text {
+        .content-container--text {
             max-width: 500px;
-            h2 {
-                font-size: 4.5rem;
-            }
         }
     }
     .day-job--images {
@@ -194,17 +161,10 @@ export default {
 }
 
 @media (min-width: $breakpoint-xxlarge) {
-    .day-job {
-        justify-content: center;
-    }
-
     .day-job--content {
         margin-left: 15rem;
-        .day-job--content--text {
+        .content-container--text {
             max-width: 550px;
-            h2 {
-                font-size: 5rem;
-            }
         }
     }
 }
