@@ -88,7 +88,7 @@ export default {
 }
 
 .hero--message {
-    margin: 3rem 1rem;
+    margin: 5rem 1rem;
     .hero--message--text {
         display: block;
         min-height: 250px;
@@ -102,7 +102,7 @@ export default {
 
 @media (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
     .hero {
-        height: 50vh;
+        height: 75vh;
     }
     .hero--message {
         margin: 3rem;
