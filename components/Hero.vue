@@ -88,7 +88,7 @@ export default {
 }
 
 .hero--message {
-    margin: 1rem;
+    margin: 3rem 1rem;
     .hero--message--text {
         display: block;
         min-height: 250px;
@@ -105,6 +105,7 @@ export default {
         height: 50vh;
     }
     .hero--message {
+        margin: 3rem;
         .hero--message--text {
             font-size: 4rem;
             min-height: 160px;
