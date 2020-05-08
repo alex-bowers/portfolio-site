@@ -1,9 +1,11 @@
 <template>
-    <div class="container">
-        <hero></hero>
-        <about-me></about-me>
-        <dayJob></dayJob>
-        <happy-dev></happy-dev>
+    <div>
+        <div class="container">
+            <hero></hero>
+            <about-me></about-me>
+            <dayJob></dayJob>
+            <happy-dev></happy-dev>
+        </div>
         <site-footer></site-footer>
     </div>
 </template>
