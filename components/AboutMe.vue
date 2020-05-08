@@ -55,7 +55,7 @@ export default {
 @import '~/assets/scss/settings.scss';
 
 .about-me--content {
-    padding: 1rem;
+    padding: 2rem;
 }
 
 .about-me--image {
@@ -84,6 +84,9 @@ export default {
 
 @media (min-width: $breakpoint-medium) {
     .about-me {
+        padding: 1rem;
+    }
+    .about-me--content {
         padding: 1rem;
     }
     .about-me--image {
