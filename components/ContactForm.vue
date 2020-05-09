@@ -28,8 +28,9 @@
                 class="field-with-floating-input"
                 :class="{ 'is-focused': focus.name }"
             >
-                <label>Name</label>
+                <label for="nameField">Name</label>
                 <input
+                    id="nameField"
                     v-model="formData.name"
                     name="user_name"
                     type="text"
@@ -41,8 +42,9 @@
                 class="field-with-floating-input"
                 :class="{ 'is-focused': focus.email }"
             >
-                <label>Email address</label>
+                <label for="emailField">Email address</label>
                 <input
+                    id="emailField"
                     v-model="formData.email"
                     name="user_email"
                     type="email"
@@ -54,8 +56,9 @@
                 class="field-with-floating-input"
                 :class="{ 'is-focused': focus.message }"
             >
-                <label>Message</label>
+                <label for="messageField">Message</label>
                 <textarea
+                    id="messageField"
                     v-model="formData.message"
                     name="message"
                     rows="5"
