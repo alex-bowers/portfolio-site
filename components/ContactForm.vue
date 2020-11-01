@@ -1,81 +1,85 @@
 <template>
-    <div class="contact-form--container">
-        <div v-if="hasUserTriedToSentEmail" class="contact-form--result">
-            <div v-if="emailSentStatus === 'success'">
-                <p><strong>Thank you for contacting me.</strong></p>
-                <p>I will reply as soon as I can.</p>
+    <section class="contact-me">
+        <div class="contact-me--container">
+            <div v-if="hasUserTriedToSentEmail" class="contact-me--result">
+                <div v-if="emailSentStatus === 'success'">
+                    <p><strong>Thank you for contacting me.</strong></p>
+                    <p>I will reply as soon as I can.</p>
+                </div>
+                <div v-if="emailSentStatus === 'failed'">
+                    <p>
+                        <strong
+                            >Unfortunately this email has failed to send.
+                        </strong>
+                    </p>
+                    <p>
+                        <!-- eslint-disable-next-line prettier/prettier -->
+                        Please try to contact me by using one of my social links below.
+                    </p>
+                </div>
             </div>
-            <div v-if="emailSentStatus === 'failed'">
-                <p>
-                    <strong
-                        >Unfortunately this email has failed to send.
-                    </strong>
-                </p>
-                <p>
-                    <!-- eslint-disable-next-line prettier/prettier -->
-                    Please try to contact me by using one of my social links below.
-                </p>
-            </div>
+            <form
+                v-if="!hasUserTriedToSentEmail"
+                class="contact-me--form"
+                name="contact"
+                @submit.prevent="sendEmail"
+            >
+                <h3 class="contact-me--form--header">Contact me.</h3>
+                <div
+                    class="field-with-floating-input"
+                    :class="{ 'is-focused': focus.name }"
+                >
+                    <label for="nameField">Name</label>
+                    <input
+                        id="nameField"
+                        v-model="formData.name"
+                        name="user_name"
+                        type="text"
+                        @blur="toggleLabelFocus('name')"
+                        @focus="toggleLabelFocus('name')"
+                    />
+                </div>
+                <div
+                    class="field-with-floating-input"
+                    :class="{ 'is-focused': focus.email }"
+                >
+                    <label for="emailField">Email address</label>
+                    <input
+                        id="emailField"
+                        v-model="formData.email"
+                        name="user_email"
+                        type="email"
+                        @blur="toggleLabelFocus('email')"
+                        @focus="toggleLabelFocus('email')"
+                    />
+                </div>
+                <div
+                    class="field-with-floating-input"
+                    :class="{ 'is-focused': focus.message }"
+                >
+                    <label for="messageField">Message</label>
+                    <textarea
+                        id="messageField"
+                        v-model="formData.message"
+                        name="message"
+                        rows="5"
+                        @blur="toggleLabelFocus('message')"
+                        @focus="toggleLabelFocus('message')"
+                    ></textarea>
+                </div>
+                <div class="contact-me--form--button">
+                    <button
+                        :class="{ 'contact-button--loading': isEmailSending }"
+                        :disabled="isEmailSending"
+                        class="contact-button"
+                        type="submit"
+                    >
+                        {{ buttonText }}
+                    </button>
+                </div>
+            </form>
         </div>
-        <form
-            v-if="!hasUserTriedToSentEmail"
-            class="contact-form"
-            name="contact"
-            @submit.prevent="sendEmail"
-        >
-            <h3>Contact me.</h3>
-            <div
-                class="field-with-floating-input"
-                :class="{ 'is-focused': focus.name }"
-            >
-                <label for="nameField">Name</label>
-                <input
-                    id="nameField"
-                    v-model="formData.name"
-                    name="user_name"
-                    type="text"
-                    @blur="toggleLabelFocus('name')"
-                    @focus="toggleLabelFocus('name')"
-                />
-            </div>
-            <div
-                class="field-with-floating-input"
-                :class="{ 'is-focused': focus.email }"
-            >
-                <label for="emailField">Email address</label>
-                <input
-                    id="emailField"
-                    v-model="formData.email"
-                    name="user_email"
-                    type="email"
-                    @blur="toggleLabelFocus('email')"
-                    @focus="toggleLabelFocus('email')"
-                />
-            </div>
-            <div
-                class="field-with-floating-input"
-                :class="{ 'is-focused': focus.message }"
-            >
-                <label for="messageField">Message</label>
-                <textarea
-                    id="messageField"
-                    v-model="formData.message"
-                    name="message"
-                    rows="5"
-                    @blur="toggleLabelFocus('message')"
-                    @focus="toggleLabelFocus('message')"
-                ></textarea>
-            </div>
-            <button
-                class="contact-button"
-                :class="{ 'contact-button--loading': isEmailSending }"
-                :disabled="isEmailSending"
-                type="submit"
-            >
-                {{ buttonText }}
-            </button>
-        </form>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -144,20 +148,24 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/assets/scss/colours.scss';
+@import '~/assets/scss/settings.scss';
 
-.contact-form--container {
+.contact-me {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $secondary-colour;
+    padding: $padding-small-breakpoint;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-me--container {
     max-width: 500px;
     width: 100%;
 }
 
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    color: $secondary-colour;
-    margin-bottom: 5rem;
-}
-
-.contact-form--result {
+.contact-me--result {
     text-align: center;
     background-color: $secondary-colour;
     color: $white;
@@ -166,14 +174,41 @@ export default {
     margin-bottom: 5rem;
 }
 
+.contact-me--form {
+    display: flex;
+    flex-direction: column;
+    color: $primary-colour;
+    .contact-me--form--header {
+        margin-top: 0;
+    }
+    .contact-me--form--button {
+        text-align: right;
+        button {
+            border-color: $primary-colour;
+            color: $primary-colour;
+            width: 150px;
+            &:hover {
+                border-color: lighten($primary-colour, 15%);
+                color: lighten($primary-colour, 15%);
+            }
+            &.contact-button--loading {
+                &:hover {
+                    border-color: $white;
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
 .field-with-floating-input {
     position: relative;
     input,
     textarea {
         border: 0;
-        color: $secondary-colour;
+        color: $primary-colour;
         padding: 3px 0;
-        border-bottom: 2px solid $secondary-colour;
+        border-bottom: 2px solid $primary-colour;
         box-shadow: none;
         font-family: inherit;
         font-size: inherit;
@@ -186,9 +221,8 @@ export default {
         left: 0;
     }
     textarea {
-        background-color: lighten($tertiary-colour, 10%);
+        background-color: $secondary-colour;
         box-sizing: border-box;
-        padding: 1rem;
         resize: vertical;
     }
     label {
@@ -210,16 +244,15 @@ export default {
     }
 }
 
-button {
-    &:hover {
-        border-color: $secondary-colour;
-        color: $secondary-colour;
+@media (min-width: $breakpoint-medium) {
+    .contact-me {
+        padding: $padding-medium-breakpoint;
     }
-    &.contact-button--loading {
-        &:hover {
-            border-color: $white;
-            color: $white;
-        }
+}
+
+@media (min-width: $breakpoint-large) {
+    .contact-me {
+        padding: $padding-large-breakpoint;
     }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
-    <div class="happy-dev">
+    <section class="happy-dev">
         <div class="happy-dev--container">
-            <img src="../assets/images/happy-dev.svg" alt="Happy Dev Logo" />
+            <img src="../assets/images/happy-dev.png" alt="Happy Dev Logo" />
             <div class="happy-dev--content">
                 <div class="happy-dev--content--text">
                     <p>
@@ -24,7 +24,7 @@
                 </a>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -45,10 +45,10 @@ export default {
     display: flex;
     justify-content: center;
     position: relative;
-    background-color: $secondary-colour;
-    color: $white;
+    background-color: $happy-dev-primary;
+    color: $happy-dev-secondary;
     font-size: 1rem;
-    padding: 4rem 3rem;
+    padding: $padding-small-breakpoint;
     z-index: 1;
 }
 
@@ -66,16 +66,18 @@ export default {
     display: flex;
     flex-direction: column;
     .episode-button {
+        border-color: $happy-dev-secondary;
+        color: $happy-dev-secondary;
         &:hover {
-            border-color: $primary-colour;
-            color: $primary-colour;
+            border-color: lighten($happy-dev-secondary, 35%);
+            color: lighten($happy-dev-secondary, 35%);
         }
     }
 }
 
 @media (min-width: $breakpoint-medium) {
     .happy-dev {
-        padding: 4rem;
+        padding: $padding-medium-breakpoint;
     }
     .happy-dev--container {
         flex-direction: row;
@@ -95,7 +97,7 @@ export default {
 
 @media (min-width: $breakpoint-large) {
     .happy-dev {
-        padding: 5rem 2rem;
+        padding: $padding-large-breakpoint;
     }
     .happy-dev--container {
         img {
