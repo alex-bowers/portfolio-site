@@ -129,6 +129,10 @@ export default {
     },
     methods: {
         sendEmail(e) {
+            if (this.formData.name === '' || this.formData.email === '') {
+                return false
+            }
+
             this.isEmailSending = true
             axios
                 .post('https://api.emailjs.com/api/v1.0/email/send', {
