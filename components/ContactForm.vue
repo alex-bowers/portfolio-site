@@ -21,7 +21,7 @@
             <form
                 v-if="!hasUserTriedToSentEmail"
                 class="contact-me--form"
-                name="contact"
+                name="contact-me"
                 @submit.prevent="sendEmail"
             >
                 <h3 class="contact-me--form--header">Contact me.</h3>
@@ -29,12 +29,18 @@
                     class="field-with-floating-input"
                     :class="{ 'is-focused': focus.name }"
                 >
-                    <label for="nameField">Name</label>
+                    <label for="nameField">
+                        Name
+                        <span class="field-with-floating-input--required">
+                            - required
+                        </span>
+                    </label>
                     <input
                         id="nameField"
                         v-model="formData.name"
                         name="user_name"
                         type="text"
+                        required
                         @blur="toggleLabelFocus('name')"
                         @focus="toggleLabelFocus('name')"
                     />
@@ -43,12 +49,18 @@
                     class="field-with-floating-input"
                     :class="{ 'is-focused': focus.email }"
                 >
-                    <label for="emailField">Email address</label>
+                    <label for="emailField">
+                        Email address
+                        <span class="field-with-floating-input--required">
+                            - required
+                        </span>
+                    </label>
                     <input
                         id="emailField"
                         v-model="formData.email"
                         name="user_email"
                         type="email"
+                        required
                         @blur="toggleLabelFocus('email')"
                         @focus="toggleLabelFocus('email')"
                     />
@@ -83,7 +95,7 @@
 </template>
 
 <script>
-import emailjs from 'emailjs-com'
+import axios from 'axios'
 
 export default {
     data() {
@@ -117,25 +129,30 @@ export default {
     },
     methods: {
         sendEmail(e) {
+            if (this.formData.name === '' || this.formData.email === '') {
+                return false
+            }
+
             this.isEmailSending = true
-            emailjs
-                .sendForm(
-                    this.enviromentVariables.service,
-                    this.enviromentVariables.template,
-                    e.target,
-                    this.enviromentVariables.user
-                )
-                .then(
-                    (result) => {
-                        this.hasUserTriedToSentEmail = true
-                        this.emailSentStatus = 'success'
-                    },
-                    // eslint-disable-next-line handle-callback-err
-                    (error) => {
-                        this.hasUserTriedToSentEmail = true
-                        this.emailSentStatus = 'failed'
+            axios
+                .post('https://api.emailjs.com/api/v1.0/email/send', {
+                    service_id: this.enviromentVariables.service,
+                    template_id: this.enviromentVariables.template,
+                    user_id: this.enviromentVariables.user,
+                    template_params: {
+                        user_name: this.formData.name,
+                        user_email: this.formData.email,
+                        message: this.formData.message
                     }
-                )
+                })
+                .then(() => {
+                    this.hasUserTriedToSentEmail = true
+                    this.emailSentStatus = 'success'
+                })
+                .catch(() => {
+                    this.hasUserTriedToSentEmail = true
+                    this.emailSentStatus = 'failed'
+                })
         },
         toggleLabelFocus(type) {
             if (!this.formData[type]) {
@@ -186,7 +203,7 @@ export default {
         button {
             border-color: $primary-colour;
             color: $primary-colour;
-            width: 150px;
+            width: 185px;
             &:hover {
                 border-color: lighten($primary-colour, 15%);
                 color: lighten($primary-colour, 15%);
@@ -203,6 +220,9 @@ export default {
 
 .field-with-floating-input {
     position: relative;
+    .field-with-floating-input--required {
+        font-size: 0.75rem;
+    }
     input,
     textarea {
         border: 0;

@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@nuxtjs/dotenv": "~1.4.1",
-    "emailjs-com": "~2.3.2",
+    "axios": "^0.21.0",
     "nuxt": "~2.14.7"
   },
   "devDependencies": {
