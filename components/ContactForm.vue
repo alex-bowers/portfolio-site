@@ -187,7 +187,7 @@ export default {
         button {
             border-color: $primary-colour;
             color: $primary-colour;
-            width: 150px;
+            width: 185px;
             &:hover {
                 border-color: lighten($primary-colour, 15%);
                 color: lighten($primary-colour, 15%);
