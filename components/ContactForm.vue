@@ -21,7 +21,7 @@
             <form
                 v-if="!hasUserTriedToSentEmail"
                 class="contact-me--form"
-                name="contact"
+                name="contact-me"
                 @submit.prevent="sendEmail"
             >
                 <h3 class="contact-me--form--header">Contact me.</h3>
@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import emailjs from 'emailjs-com'
+import axios from 'axios'
 
 export default {
     data() {
@@ -118,24 +118,25 @@ export default {
     methods: {
         sendEmail(e) {
             this.isEmailSending = true
-            emailjs
-                .sendForm(
-                    this.enviromentVariables.service,
-                    this.enviromentVariables.template,
-                    e.target,
-                    this.enviromentVariables.user
-                )
-                .then(
-                    (result) => {
-                        this.hasUserTriedToSentEmail = true
-                        this.emailSentStatus = 'success'
-                    },
-                    // eslint-disable-next-line handle-callback-err
-                    (error) => {
-                        this.hasUserTriedToSentEmail = true
-                        this.emailSentStatus = 'failed'
+            axios
+                .post('https://api.emailjs.com/api/v1.0/email/send', {
+                    service_id: this.enviromentVariables.service,
+                    template_id: this.enviromentVariables.template,
+                    user_id: this.enviromentVariables.user,
+                    template_params: {
+                        user_name: this.formData.name,
+                        user_email: this.formData.email,
+                        message: this.formData.message
                     }
-                )
+                })
+                .then(() => {
+                    this.hasUserTriedToSentEmail = true
+                    this.emailSentStatus = 'success'
+                })
+                .catch(() => {
+                    this.hasUserTriedToSentEmail = true
+                    this.emailSentStatus = 'failed'
+                })
         },
         toggleLabelFocus(type) {
             if (!this.formData[type]) {
