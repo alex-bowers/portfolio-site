@@ -29,12 +29,18 @@
                     class="field-with-floating-input"
                     :class="{ 'is-focused': focus.name }"
                 >
-                    <label for="nameField">Name</label>
+                    <label for="nameField">
+                        Name
+                        <span class="field-with-floating-input--required">
+                            - required
+                        </span>
+                    </label>
                     <input
                         id="nameField"
                         v-model="formData.name"
                         name="user_name"
                         type="text"
+                        required
                         @blur="toggleLabelFocus('name')"
                         @focus="toggleLabelFocus('name')"
                     />
@@ -43,12 +49,18 @@
                     class="field-with-floating-input"
                     :class="{ 'is-focused': focus.email }"
                 >
-                    <label for="emailField">Email address</label>
+                    <label for="emailField">
+                        Email address
+                        <span class="field-with-floating-input--required">
+                            - required
+                        </span>
+                    </label>
                     <input
                         id="emailField"
                         v-model="formData.email"
                         name="user_email"
                         type="email"
+                        required
                         @blur="toggleLabelFocus('email')"
                         @focus="toggleLabelFocus('email')"
                     />
@@ -204,6 +216,9 @@ export default {
 
 .field-with-floating-input {
     position: relative;
+    .field-with-floating-input--required {
+        font-size: 0.75rem;
+    }
     input,
     textarea {
         border: 0;
