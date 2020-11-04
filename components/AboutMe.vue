@@ -1,6 +1,6 @@
 <template>
     <section class="about-me content-container">
-        <div class="about-me--image">
+        <div class="about-me--image animate-element">
             <div class="about-me--image--with-background">
                 <img src="../assets/images/profile.jpg" alt="Profile Picture" />
                 <div class="image-background--secondary left-align"></div>
@@ -12,7 +12,7 @@
                 ></social-links>
             </div>
         </div>
-        <div class="about-me--content">
+        <div class="about-me--content animate-element">
             <div class="content-container--text">
                 <h2>I'm the Lead Developer at Blue Bay Travel.</h2>
                 <div>Located in Stoke-on-Trent, UK.</div>
@@ -31,11 +31,13 @@
 
 <script>
 import SocialLinks from '~/components/Common/Social.vue'
+import ObserverMixin from '~/mixins/observer.js'
 
 export default {
     components: {
         SocialLinks
     },
+    mixins: [ObserverMixin],
     data() {
         return {
             list: [

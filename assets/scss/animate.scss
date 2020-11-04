@@ -1,0 +1,18 @@
+/**
+* Animating elements into view.
+*/
+@media (min-width: $breakpoint-large) {
+    .animate-element {
+        opacity: 0;
+    }
+
+    .make-visible {
+        animation: come-in 0.6s ease forwards;
+    }
+
+    @keyframes come-in {
+        to {
+            opacity: 1;
+        }
+    }
+}

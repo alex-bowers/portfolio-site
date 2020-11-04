@@ -2,10 +2,10 @@
     <div>
         <div class="container">
             <hero></hero>
-            <about-me></about-me>
-            <dayJob></dayJob>
-            <happy-dev></happy-dev>
-            <contact-form></contact-form>
+            <aboutMe :observer="observer"></aboutMe>
+            <dayJob :observer="observer"></dayJob>
+            <happyDev></happyDev>
+            <contactForm></contactForm>
         </div>
         <site-footer></site-footer>
     </div>
@@ -27,8 +27,32 @@ export default {
         HappyDev,
         Hero,
         SiteFooter
+    },
+    data() {
+        return {
+            observer: null
+        }
+    },
+    mounted() {
+        this.observer = new IntersectionObserver(this.onElementObserved, {
+            threshold: 0.2
+        })
+    },
+    beforeDestroy() {
+        this.observer.disconnect()
+    },
+    methods: {
+        onElementObserved(entries) {
+            entries.forEach(({ target, isIntersecting }) => {
+                if (!isIntersecting) {
+                    return
+                }
+
+                target.classList.add('make-visible')
+
+                this.observer.unobserve(target)
+            })
+        }
     }
 }
 </script>
-
-<style></style>
