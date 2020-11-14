@@ -1,4 +1,14 @@
 /**
+* Vue.js transitions.
+*/
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 3s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+
+/**
 * Animating elements into view.
 */
 @media (min-width: $breakpoint-large) {
@@ -29,6 +39,18 @@
     }
     100% {
         transform: rotate(0deg);
+    }
+}
+
+@keyframes point-down {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0);
     }
 }
 

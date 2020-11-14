@@ -4,11 +4,19 @@
             <h1>Hello. I'm Alex Bowers</h1>
             <div id="heroText" class="hero--message--text"></div>
         </div>
+        <transition name="fade">
+            <scroll-down v-if="isScrollAnimationVisible"></scroll-down>
+        </transition>
     </section>
 </template>
 
 <script>
+import ScrollDown from './ScrollDown.vue'
+
 export default {
+    components: {
+        ScrollDown
+    },
     data() {
         return {
             currentRowIndex: 0,
@@ -19,6 +27,11 @@ export default {
             nextCharacterSpeed: 100,
             scrollTextAt: 4,
             textPosition: 0
+        }
+    },
+    computed: {
+        isScrollAnimationVisible() {
+            return this.finishedRowIndex === this.headerRows.length
         }
     },
     mounted() {
@@ -78,7 +91,7 @@ export default {
 
 .hero {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     position: relative;
     background-color: $primary-colour;
     color: $white;
@@ -88,7 +101,7 @@ export default {
 }
 
 .hero--message {
-    margin: 5rem 1rem;
+    margin: 1rem;
     .hero--message--text {
         display: block;
         min-height: 250px;
