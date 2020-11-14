@@ -1,6 +1,6 @@
 <template>
     <section class="day-job content-container">
-        <div class="day-job--content">
+        <div class="day-job--content animate-element">
             <div class="content-container--text">
                 <h2>Day Job.</h2>
                 <p>I have worked at Blue Bay Travel since November 2012.</p>
@@ -22,7 +22,7 @@
                 </ul>
             </div>
         </div>
-        <div class="day-job--images">
+        <div class="day-job--images animate-element">
             <div class="day-job-images--one">
                 <img
                     src="../assets/images/warehouse.jpg"
@@ -42,7 +42,10 @@
 </template>
 
 <script>
+import ObserverMixin from '~/mixins/observer.js'
+
 export default {
+    mixins: [ObserverMixin],
     data() {
         return {
             websiteLinks: {
