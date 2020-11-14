@@ -16,3 +16,30 @@
         }
     }
 }
+
+/**
+* Animating SVG elements.
+*/
+@keyframes arm-move {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes wave {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    50% {
+        transform: rotateZ(7deg);
+    }
+    100% {
+        transform: rotateZ(0deg);
+    }
+}

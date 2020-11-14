@@ -1,95 +1,100 @@
 <template>
     <section class="contact-me">
         <div class="contact-me--container">
-            <div v-if="hasUserTriedToSentEmail" class="contact-me--result">
-                <div v-if="emailSentStatus === 'success'">
-                    <p><strong>Thank you for contacting me.</strong></p>
-                    <p>I will reply as soon as I can.</p>
+            <div class="contact-me--form-container">
+                <div v-if="hasUserTriedToSentEmail" class="contact-me--result">
+                    <div v-if="emailSentStatus === 'success'">
+                        <p><strong>Thank you for contacting me.</strong></p>
+                        <p>I will reply as soon as I can.</p>
+                    </div>
+                    <div v-if="emailSentStatus === 'failed'">
+                        <p>
+                            <strong
+                                >Unfortunately this email has failed to send.
+                            </strong>
+                        </p>
+                        <p>
+                            <!-- eslint-disable-next-line prettier/prettier -->
+                            Please try to contact me by using one of my social links below.
+                        </p>
+                    </div>
                 </div>
-                <div v-if="emailSentStatus === 'failed'">
-                    <p>
-                        <strong
-                            >Unfortunately this email has failed to send.
-                        </strong>
-                    </p>
-                    <p>
-                        <!-- eslint-disable-next-line prettier/prettier -->
-                        Please try to contact me by using one of my social links below.
-                    </p>
-                </div>
-            </div>
-            <form
-                v-if="!hasUserTriedToSentEmail"
-                class="contact-me--form"
-                name="contact-me"
-                @submit.prevent="sendEmail"
-            >
-                <h3 class="contact-me--form--header">Contact me.</h3>
-                <div
-                    class="field-with-floating-input"
-                    :class="{ 'is-focused': focus.name }"
+                <form
+                    v-if="!hasUserTriedToSentEmail"
+                    class="contact-me--form"
+                    name="contact-me"
+                    @submit.prevent="sendEmail"
                 >
-                    <label for="nameField">
-                        Name
-                        <span class="field-with-floating-input--required">
-                            - required
-                        </span>
-                    </label>
-                    <input
-                        id="nameField"
-                        v-model="formData.name"
-                        name="user_name"
-                        type="text"
-                        required
-                        @blur="toggleLabelFocus('name')"
-                        @focus="toggleLabelFocus('name')"
-                    />
-                </div>
-                <div
-                    class="field-with-floating-input"
-                    :class="{ 'is-focused': focus.email }"
-                >
-                    <label for="emailField">
-                        Email address
-                        <span class="field-with-floating-input--required">
-                            - required
-                        </span>
-                    </label>
-                    <input
-                        id="emailField"
-                        v-model="formData.email"
-                        name="user_email"
-                        type="email"
-                        required
-                        @blur="toggleLabelFocus('email')"
-                        @focus="toggleLabelFocus('email')"
-                    />
-                </div>
-                <div
-                    class="field-with-floating-input"
-                    :class="{ 'is-focused': focus.message }"
-                >
-                    <label for="messageField">Message</label>
-                    <textarea
-                        id="messageField"
-                        v-model="formData.message"
-                        name="message"
-                        rows="5"
-                        @blur="toggleLabelFocus('message')"
-                        @focus="toggleLabelFocus('message')"
-                    ></textarea>
-                </div>
-                <div class="contact-me--form--button">
-                    <button
-                        :class="{ 'contact-button--loading': isEmailSending }"
-                        :disabled="isEmailSending"
-                        class="contact-button"
-                        type="submit"
+                    <h3 class="contact-me--form--header">Contact me.</h3>
+                    <div
+                        class="field-with-floating-input"
+                        :class="{ 'is-focused': focus.name }"
                     >
-                        {{ buttonText }}
-                    </button>
-                </div>
-            </form>
+                        <label for="nameField">
+                            Name
+                            <span class="field-with-floating-input--required">
+                                - required
+                            </span>
+                        </label>
+                        <input
+                            id="nameField"
+                            v-model="formData.name"
+                            name="user_name"
+                            type="text"
+                            required
+                            @blur="toggleLabelFocus('name')"
+                            @focus="toggleLabelFocus('name')"
+                        />
+                    </div>
+                    <div
+                        class="field-with-floating-input"
+                        :class="{ 'is-focused': focus.email }"
+                    >
+                        <label for="emailField">
+                            Email address
+                            <span class="field-with-floating-input--required">
+                                - required
+                            </span>
+                        </label>
+                        <input
+                            id="emailField"
+                            v-model="formData.email"
+                            name="user_email"
+                            type="email"
+                            required
+                            @blur="toggleLabelFocus('email')"
+                            @focus="toggleLabelFocus('email')"
+                        />
+                    </div>
+                    <div
+                        class="field-with-floating-input"
+                        :class="{ 'is-focused': focus.message }"
+                    >
+                        <label for="messageField">Message</label>
+                        <textarea
+                            id="messageField"
+                            v-model="formData.message"
+                            name="message"
+                            rows="5"
+                            @blur="toggleLabelFocus('message')"
+                            @focus="toggleLabelFocus('message')"
+                        ></textarea>
+                    </div>
+                    <div class="contact-me--form--button">
+                        <button
+                            :class="{
+                                'contact-button--loading': isEmailSending
+                            }"
+                            :disabled="isEmailSending"
+                            class="contact-button"
+                            type="submit"
+                        >
+                            {{ buttonText }}
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <alex-waving></alex-waving>
         </div>
     </section>
 </template>
@@ -97,7 +102,12 @@
 <script>
 import axios from 'axios'
 
+import AlexWaving from './AlexWaving.vue'
+
 export default {
+    components: {
+        AlexWaving
+    },
     data() {
         return {
             emailSentStatus: null,
@@ -170,7 +180,6 @@ export default {
 .contact-me {
     display: flex;
     justify-content: center;
-    align-items: center;
     background-color: $secondary-colour;
     padding: $padding-small-breakpoint;
     position: relative;
@@ -178,6 +187,15 @@ export default {
 }
 
 .contact-me--container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: $breakpoint-xxlarge;
+    width: 100%;
+}
+
+.contact-me--form-container {
     max-width: 500px;
     width: 100%;
 }
@@ -273,6 +291,9 @@ export default {
 @media (min-width: $breakpoint-large) {
     .contact-me {
         padding: $padding-large-breakpoint;
+    }
+    .contact-me--container {
+        flex-direction: row;
     }
 }
 </style>
