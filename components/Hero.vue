@@ -78,6 +78,10 @@ export default {}
     img {
         display: flex;
         filter: grayscale(1);
+        &:hover {
+            filter: none;
+            opacity: 1;
+        }
     }
 }
 
