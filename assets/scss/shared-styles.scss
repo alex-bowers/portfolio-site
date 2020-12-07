@@ -2,6 +2,14 @@
 @import '~/assets/scss/settings.scss';
 @import '~/assets/scss/animate.scss';
 
+.full-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $white;
+    min-height: 100vh;
+}
+
 .contact-button, .episode-button {
     background: transparent;
     border: 1px $white solid;
@@ -15,7 +23,13 @@
 }
 
 .container {
+    position: relative;
+    background-color: $white;
+    border: $border-width-small solid black;
+    margin: $border-width-small;
+    margin-bottom: 0;
     overflow-x: hidden;
+    z-index: 1;
 }
 
 .content-container {
@@ -102,6 +116,11 @@
 @media (min-width: $breakpoint-xlarge) {
     h2 {
         font-size: 4rem;
+    }
+    .container {
+        border-width: $border-width-large;
+        margin: $border-width-large;
+        margin-bottom: 0;
     }
     .content-container {
         .content-container--text {
