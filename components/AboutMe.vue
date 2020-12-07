@@ -145,12 +145,6 @@ ul {
 }
 
 @media (min-width: $breakpoint-small-medium) {
-    h2 {
-        font-size: 2rem;
-    }
-    h3 {
-        font-size: 1.5rem;
-    }
     ul {
         font-size: 1rem;
     }
@@ -183,9 +177,6 @@ ul {
 }
 
 @media (min-width: $breakpoint-xlarge) {
-    h2 {
-        font-size: 4rem;
-    }
     ul {
         font-size: 1.25rem;
     }

@@ -77,6 +77,15 @@
     }
 }
 
+@media (min-width: $breakpoint-small-medium) {
+    h2 {
+        font-size: 2rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+}
+
 @media (min-width: $breakpoint-large) {
     .content-container {
         flex-direction: row;
@@ -91,6 +100,9 @@
 }
 
 @media (min-width: $breakpoint-xlarge) {
+    h2 {
+        font-size: 4rem;
+    }
     .content-container {
         .content-container--text {
             h2 {
