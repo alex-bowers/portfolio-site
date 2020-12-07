@@ -14,14 +14,4 @@ html {
 body {
     margin: 0;
 }
-
-h1 {
-    font-size: 6rem;
-}
-h2 {
-    font-size: 3rem;
-}
-h3 {
-    font-size: 1.5rem;
-}
 </style>
