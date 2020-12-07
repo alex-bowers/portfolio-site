@@ -150,12 +150,6 @@ ul {
     }
 }
 
-@media (min-width: $breakpoint-medium) {
-    h2 {
-        font-size: 3rem;
-    }
-}
-
 @media (orientation: portrait) and (min-width: $breakpoint-medium),
     (orientation: landscape) and (min-width: $breakpoint-large) {
     h3 {

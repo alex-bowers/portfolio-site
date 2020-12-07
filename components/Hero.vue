@@ -46,17 +46,28 @@
                 </span>
                 <span>Located in Stoke-on-Trent, UK.</span>
             </div>
+            <scroll-down></scroll-down>
         </div>
     </section>
 </template>
 
 <script>
-export default {}
+import ScrollDown from './ScrollDown.vue'
+
+export default {
+    components: {
+        ScrollDown
+    }
+}
 </script>
 
 <style lang="scss" scoped>
 @import '~/assets/scss/colours.scss';
 @import '~/assets/scss/settings.scss';
+
+.hero {
+    position: relative;
+}
 
 .hero--container {
     display: flex;
