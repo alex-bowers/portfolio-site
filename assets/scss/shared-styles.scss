@@ -51,6 +51,32 @@
     }
 }
 
+.social-contact-svg {
+    &.reverse-colours {
+        .icon-background {
+            fill: $secondary-colour;
+        }
+        &:hover {
+            .icon-background {
+                fill: darken($secondary-colour, 10%);
+            }
+        }
+    }
+    &:not(.reverse-colours) {
+        .icon-background {
+            fill: $primary-colour;
+        }
+        &:hover {
+            .icon-background {
+                fill: darken($primary-colour, 10%);
+            }
+        }
+    }
+    .icon-background {
+        fill: $primary-colour;
+    }
+}
+
 @media (min-width: $breakpoint-large) {
     .content-container {
         flex-direction: row;
