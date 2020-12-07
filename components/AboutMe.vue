@@ -1,46 +1,103 @@
 <template>
-    <section class="about-me content-container">
-        <div class="about-me--image animate-element">
-            <div class="about-me--image--with-background">
-                <img src="../assets/images/profile.jpg" alt="Profile Picture" />
-                <div class="image-background--secondary left-align"></div>
-            </div>
-            <div class="about-me--image--social">
-                <social-links
-                    :has-no-padding-on-ends="true"
-                    padding="10px"
-                ></social-links>
-            </div>
-        </div>
-        <div class="about-me--content animate-element">
-            <div class="content-container--text">
-                <h2>I'm the Lead Developer at Blue Bay Travel.</h2>
-                <div>Located in Stoke-on-Trent, UK.</div>
-            </div>
-            <div class="content-container--list">
-                <h3>About me...</h3>
-                <ol>
-                    <li v-for="(item, itemIndex) in list" :key="itemIndex">
+    <section class="about-me">
+        <div class="about-me--container">
+            <div class="about-me--container--column animate-element">
+                <h2>About Me</h2>
+                <ul class="numbered-list">
+                    <li v-for="(item, itemIndex) in tldr" :key="itemIndex">
                         {{ item }}
                     </li>
-                </ol>
+                </ul>
+            </div>
+            <div class="about-me--container--row animate-element">
+                <div class="row--category">
+                    <h3>Qualifications</h3>
+                    <ul class="dash-list">
+                        <li
+                            v-for="(item, itemIndex) in qualifications"
+                            :key="itemIndex"
+                        >
+                            - {{ item }}
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Typical Stack</h3>
+                    <ul class="dash-list">
+                        <li v-for="(item, itemIndex) in stack" :key="itemIndex">
+                            - {{ item }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="about-me--container--row animate-element">
+                <div class="row--category">
+                    <h3>Personal Projects</h3>
+                    <ul class="dash-list">
+                        <li
+                            v-for="(item, itemIndex) in projects"
+                            :key="itemIndex"
+                            class="row--category--link"
+                        >
+                            - <a :href="item.link">{{ item.name }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Online Profiles</h3>
+                    <ul class="dash-list">
+                        <li
+                            v-for="(item, itemIndex) in profiles"
+                            :key="itemIndex"
+                            class="row--category--link"
+                        >
+                            - <a :href="item.link">{{ item.name }}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 </template>
 
 <script>
-import SocialLinks from '~/components/Common/Social.vue'
 import ObserverMixin from '~/mixins/observer.js'
 
 export default {
-    components: {
-        SocialLinks
-    },
     mixins: [ObserverMixin],
     data() {
         return {
-            list: [
+            profiles: [
+                {
+                    name: 'LinkedIn',
+                    link: 'https://www.linkedin.com/in/alex-bowers-15874354/'
+                },
+                {
+                    name: 'Twitter',
+                    link: 'https://twitter.com/alex_bowers'
+                }
+            ],
+            projects: [
+                {
+                    name: 'GitHub',
+                    link: 'https://github.com/alex-bowers'
+                },
+                {
+                    name: 'CodePen',
+                    link: 'https://codepen.io/alex-bowers'
+                }
+            ],
+            qualifications: [
+                'Mental Health First Aid',
+                'BSc Applied IT, First-Class Honours',
+                'Level 3 Certificate in Leadership & Management'
+            ],
+            stack: [
+                'Languages: JavaScript, PHP, HTML and CSS',
+                'Frameworks: Vue.js and Laravel',
+                'Database: MySQL'
+            ],
+            tldr: [
                 'Full Stack Developer',
                 'Problem Solver',
                 '8 years commercial experience',
@@ -56,83 +113,87 @@ export default {
 @import '~/assets/scss/colours.scss';
 @import '~/assets/scss/settings.scss';
 
-.about-me--content {
-    padding: 2rem;
+.about-me--container {
+    color: $secondary-colour;
+    padding: 0 1rem;
+    max-width: 1200px;
+    width: 100%;
 }
 
-.about-me--image {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
-    .about-me--image--with-background {
-        position: relative;
-        margin-bottom: 1.25rem;
-        img {
-            position: relative;
-            width: 100%;
-            z-index: 1;
-        }
-        .image-background--secondary {
-            display: none;
-            z-index: 0;
-        }
+h2,
+h3 {
+    margin-bottom: 0.5rem;
+}
+
+ul {
+    font-size: 0.875rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.dash-list {
+    list-style-type: none;
+    padding-left: 0;
+    .row--category--link + .row--category--link {
+        margin-top: 0.5rem;
     }
-    .about-me--image--social {
-        display: flex;
-        justify-content: center;
+}
+
+.numbered-list {
+    list-style: decimal;
+    padding-left: 1.125rem;
+}
+
+@media (min-width: $breakpoint-small-medium) {
+    h2 {
+        font-size: 2rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+    ul {
+        font-size: 1rem;
     }
 }
 
 @media (min-width: $breakpoint-medium) {
-    .about-me {
-        padding: 1rem;
+    h2 {
+        font-size: 3rem;
     }
-    .about-me--content {
-        padding: 1rem;
+}
+
+@media (orientation: portrait) and (min-width: $breakpoint-medium),
+    (orientation: landscape) and (min-width: $breakpoint-large) {
+    h3 {
+        font-size: 2rem;
     }
-    .about-me--image {
-        margin-bottom: 3rem;
-        .about-me--image--with-background {
-            img {
-                border-radius: 0.625rem;
-            }
+    .about-me--container {
+        padding: 0 3rem;
+    }
+    .about-me--container--column {
+        margin-bottom: 5rem;
+    }
+    .about-me--container--row {
+        display: flex;
+        flex-direction: row;
+        .row--category {
+            width: 50%;
         }
     }
 }
 
-@media (min-width: $breakpoint-large) {
-    .about-me {
-        padding: 15rem 2rem;
+@media (min-width: $breakpoint-xlarge) {
+    h2 {
+        font-size: 4rem;
     }
-    .about-me--content {
-        order: 1;
-        .content-container--text {
-            margin-bottom: 4.6875rem;
-            max-width: 550px;
-        }
-        .content-container--list {
-            margin-bottom: 3.4375rem;
-        }
-    }
-    .about-me--image {
-        align-items: flex-end;
-        margin-bottom: 0;
-        order: 2;
-        .about-me--image--with-background {
-            .image-background--secondary {
-                display: block;
-            }
-        }
+    ul {
+        font-size: 1.25rem;
     }
 }
 
 @media (min-width: $breakpoint-xxlarge) {
-    .about-me--content {
-        .content-container--text {
-            margin-right: 10rem;
-        }
+    .about-me--container {
+        max-width: 1400px;
     }
 }
 </style>
