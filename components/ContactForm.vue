@@ -267,13 +267,13 @@ export default {
 
 @media (min-width: $breakpoint-medium) {
     .contact-me {
-        padding: $padding-medium-breakpoint;
+        padding: 5rem;
     }
 }
 
 @media (min-width: $breakpoint-large) {
     .contact-me {
-        padding: $padding-large-breakpoint;
+        padding: 7rem 2rem;
     }
     .contact-me--container {
         flex-direction: row;
