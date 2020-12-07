@@ -315,6 +315,9 @@ export default {}
             border: $border-width-large solid $white;
         }
     }
+    .images--america {
+        margin-left: -$border-width-large;
+    }
 }
 
 @media (min-width: $breakpoint-xlarge) {
