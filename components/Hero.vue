@@ -1,12 +1,63 @@
 <template>
     <section class="hero">
-        <div class="hero--message">
-            <h1>Hello. I'm Alex Bowers</h1>
-            <div id="heroText" class="hero--message--text"></div>
+        <div class="hero--container">
+            <div class="hero--container--images">
+                <div class="images--home">
+                    <div id="profileImage" class="images--home--profile">
+                        <picture class="images--home--profile--picture">
+                            <source
+                                media="(max-width: 639px)"
+                                srcset="../assets/images/profile-small.jpg"
+                            />
+                            <source
+                                media="(min-width: 640px)"
+                                srcset="../assets/images/profile.jpg"
+                            />
+                            <img
+                                src="../assets/images/profile.jpg"
+                                alt="Alex's profile Picture"
+                                height="260"
+                                width="203"
+                            />
+                        </picture>
+                    </div>
+                    <div id="etihadImage" class="images--home--etihad">
+                        <img
+                            src="../assets/images/etihad.jpg"
+                            alt="Etihad Stadium"
+                            height="100"
+                            width="100"
+                        />
+                    </div>
+                </div>
+                <div class="images--america">
+                    <div id="fenwayImage" class="images--america--fenway">
+                        <img
+                            src="../assets/images/fenway.jpg"
+                            alt="Fenway Stadium"
+                            height="50"
+                            width="50"
+                        />
+                    </div>
+                    <div id="gilletteImage" class="images--america--gillette">
+                        <img
+                            src="../assets/images/gillette.jpg"
+                            alt="Gillette Stadium"
+                            height="100"
+                            width="75"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="hero--container--text">
+                <h1>Alex Bowers</h1>
+                <span class="text--quote">
+                    “I'm the Lead Developer at Blue Bay Travel.”
+                </span>
+                <span>Located in Stoke-on-Trent, UK.</span>
+            </div>
+            <scroll-down></scroll-down>
         </div>
-        <transition name="fade">
-            <scroll-down v-if="isScrollAnimationVisible"></scroll-down>
-        </transition>
     </section>
 </template>
 
@@ -16,71 +67,6 @@ import ScrollDown from './ScrollDown.vue'
 export default {
     components: {
         ScrollDown
-    },
-    data() {
-        return {
-            currentRowIndex: 0,
-            currentRowStringLength: 6,
-            finishedRowIndex: 0,
-            headerRows: ['Hello.', "I'm Alex Bowers."],
-            lastRowContent: '',
-            nextCharacterSpeed: 100,
-            scrollTextAt: 4,
-            textPosition: 0
-        }
-    },
-    computed: {
-        isScrollAnimationVisible() {
-            return this.finishedRowIndex === this.headerRows.length
-        }
-    },
-    mounted() {
-        this.setHeroText()
-    },
-    methods: {
-        setHeroText() {
-            const headerElement = document.getElementById('heroText')
-
-            this.lastRowContent = ' '
-            this.currentRowIndex = Math.max(
-                0,
-                this.finishedRowIndex - this.scrollTextAt
-            )
-
-            while (this.currentRowIndex < this.finishedRowIndex) {
-                this.lastRowContent +=
-                    this.headerRows[this.currentRowIndex++] + '<br />'
-            }
-
-            headerElement.innerHTML =
-                this.lastRowContent +
-                this.headerRows[this.finishedRowIndex].substring(
-                    0,
-                    this.textPosition
-                )
-
-            if (this.textPosition < 16) {
-                // We don't want the new character effect once all the text has been added.
-                headerElement.innerHTML += '|'
-            }
-
-            if (this.textPosition++ === this.currentRowStringLength) {
-                this.textPosition = 0
-                this.finishedRowIndex++
-                if (this.finishedRowIndex !== this.headerRows.length) {
-                    this.currentRowStringLength = this.headerRows[
-                        this.finishedRowIndex
-                    ].length
-                    setTimeout(() => {
-                        this.setHeroText()
-                    }, 500)
-                }
-            } else {
-                setTimeout(() => {
-                    this.setHeroText()
-                }, this.nextCharacterSpeed)
-            }
-        }
     }
 }
 </script>
@@ -90,51 +76,326 @@ export default {
 @import '~/assets/scss/settings.scss';
 
 .hero {
-    display: flex;
-    align-items: flex-start;
     position: relative;
+}
+
+.hero--container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero--container--images {
+    display: flex;
+    align-items: flex-end;
+}
+
+.images--home,
+.images--america {
+    position: relative;
+    div {
+        border: $border-width-small solid $white;
+    }
+    img {
+        display: flex;
+        filter: grayscale(1);
+        &:hover {
+            filter: none;
+            opacity: 1;
+        }
+    }
+}
+
+.images--home {
+    .images--home--profile {
+        margin-bottom: 2rem;
+    }
+    .images--home--etihad {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+.images--america {
+    display: flex;
+    flex-direction: column;
+    margin-left: -$border-width-small;
+    .images--america--fenway {
+        margin-bottom: -$border-width-small;
+        width: fit-content;
+    }
+}
+
+.images--home--etihad,
+.images--america--fenway {
+    background: $primary-colour;
+    position: relative;
+    img {
+        opacity: 0.6;
+    }
+}
+
+.hero--container--text {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
     background-color: $primary-colour;
+    border: $border-width-small solid $white;
     color: $white;
-    height: 100vh;
-    width: 100vw;
-    z-index: 1;
-}
-
-.hero--message {
-    margin: 1rem;
-    .hero--message--text {
-        display: block;
-        min-height: 250px;
-        font-size: 2.5rem;
-        min-height: 100px;
-    }
+    padding: 2rem;
+    width: 220px;
     h1 {
-        display: none;
+        font-weight: 400;
+        line-height: 1;
+        margin: 0;
+    }
+    span {
+        font-size: 0.6875rem;
     }
 }
 
-@media (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
-    .hero {
-        height: 75vh;
+@media (orientation: portrait) and (min-width: $breakpoint-small) and (max-width: $breakpoint-small-medium - 1) {
+    .images--home {
+        .images--home--etihad img {
+            height: 120px;
+            width: 120px;
+        }
+        .images--home--profile--picture img {
+            height: 315px;
+            width: 247px;
+        }
     }
-    .hero--message {
-        margin: 3rem;
-        .hero--message--text {
+    .images--america {
+        .images--america--fenway img {
+            height: 60px;
+            width: 60px;
+        }
+        .images--america--gillette img {
+            height: 120px;
+            width: 90px;
+        }
+    }
+    .hero--container--text {
+        width: 280px;
+        span {
+            font-size: 0.8125rem;
+        }
+    }
+}
+
+@media (orientation: portrait) and (min-width: $breakpoint-small-medium) and (max-width: $breakpoint-medium - 1) {
+    .images--home {
+        .images--home--etihad img {
+            height: 130px;
+            width: 130px;
+        }
+        .images--home--profile--picture img {
+            height: 350px;
+            width: 274px;
+        }
+    }
+    .images--america {
+        .images--america--fenway img {
+            height: 70px;
+            width: 70px;
+        }
+        .images--america--gillette img {
+            height: 130px;
+            width: 97px;
+        }
+    }
+    .hero--container--text {
+        width: 315px;
+        span {
+            font-size: 0.875rem;
+        }
+    }
+}
+
+@media (orientation: portrait) and (min-width: $breakpoint-medium) and (max-width: $breakpoint-xlarge - 1) {
+    .images--home {
+        .images--home--etihad img {
+            height: 160px;
+            width: 160px;
+        }
+        .images--home--profile--picture img {
+            height: 515px;
+            margin-bottom: 3rem;
+            width: 403px;
+        }
+    }
+    .images--america {
+        .images--america--fenway img {
+            height: 80px;
+            width: 80px;
+        }
+        .images--america--gillette img {
+            height: 160px;
+            width: 120px;
+        }
+    }
+    .hero--container--text {
+        width: 465px;
+        h1 {
             font-size: 4rem;
-            min-height: 160px;
+        }
+        span {
+            font-size: 1rem;
+        }
+    }
+}
+
+@media (orientation: landscape) {
+    .hero--container {
+        align-items: baseline;
+        flex-direction: row;
+    }
+
+    .images--home {
+        .images--home--profile--picture img {
+            height: 220px;
+            width: 172px;
+        }
+    }
+}
+
+@media (orientation: landscape) and (max-width: $breakpoint-large - 1) {
+    .images--home {
+        .images--home--profile {
+            margin-bottom: 0;
+        }
+        .images--home--etihad {
+            display: none;
+        }
+    }
+    .images--america {
+        .images--america--fenway,
+        .images--america--gillette {
+            display: none;
+        }
+    }
+    .hero--container--text {
+        margin-left: -3rem;
+    }
+}
+
+@media (orientation: landscape) and (min-width: $breakpoint-medium) and (max-width: $breakpoint-large - 1) {
+    .images--home {
+        .images--home--profile {
+            margin-bottom: -2rem;
+            .images--home--profile--picture img {
+                height: 280px;
+                width: 219px;
+            }
+        }
+    }
+    .hero--container--text {
+        width: 315px;
+        h1 {
+            font-size: 3rem;
+        }
+        span {
+            font-size: 0.875rem;
+        }
+    }
+}
+
+@media (orientation: landscape) and (min-width: $breakpoint-large) {
+    .images--home {
+        .images--home--etihad img {
+            height: 160px;
+            width: 160px;
+        }
+        .images--home--profile--picture img {
+            height: 430px;
+            margin-bottom: 3rem;
+            width: 337px;
+        }
+    }
+    .images--america {
+        .images--america--fenway img {
+            height: 80px;
+            width: 80px;
+        }
+        .images--america--gillette img {
+            height: 160px;
+            width: 120px;
+        }
+    }
+    .hero--container--text {
+        align-items: flex-start;
+        margin-left: -2rem;
+        padding: 2rem 1rem 2rem 3rem;
+        width: 380px;
+        .text--quote {
+            font-size: 1rem;
+        }
+        h1 {
+            font-size: 4rem;
+        }
+        span {
+            font-size: 0.875rem;
         }
     }
 }
 
 @media (min-width: $breakpoint-large) {
-    .hero {
-        height: 100vh;
+    .images--home,
+    .images--america {
+        div {
+            border: $border-width-large solid $white;
+        }
     }
-    .hero--message {
-        margin: 10%;
-        .hero--message--text {
-            font-size: 6rem;
-            min-height: 240px;
+    .images--america {
+        margin-left: -$border-width-large;
+    }
+}
+
+@media (min-width: $breakpoint-xlarge) {
+    .hero--container {
+        align-items: baseline;
+        flex-direction: row;
+    }
+    .images--home {
+        .images--home--etihad img {
+            height: 200px;
+            width: 200px;
+        }
+        .images--home--profile--picture img {
+            height: 511px;
+            margin-bottom: 0;
+            width: 400px;
+        }
+    }
+
+    .images--america {
+        .images--america--fenway {
+            margin-bottom: -$border-width-large;
+            img {
+                height: 100px;
+                width: 100px;
+            }
+        }
+        .images--america--gillette img {
+            height: 200px;
+            width: 150px;
+        }
+    }
+    .hero--container--text {
+        align-items: flex-start;
+        padding: 5rem 2rem 1rem;
+        margin: 0 0 -5rem -3rem;
+        width: 400px;
+        .text--quote {
+            font-size: 1.25rem;
+        }
+        h1 {
+            font-size: 4rem;
+            margin-left: 2rem;
+        }
+        span {
+            font-size: 0.875rem;
         }
     }
 }

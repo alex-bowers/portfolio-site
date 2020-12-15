@@ -2,6 +2,14 @@
 @import '~/assets/scss/settings.scss';
 @import '~/assets/scss/animate.scss';
 
+.content-screen {
+    padding: 1rem 0 2rem;
+}
+
+.full-screen {
+    min-height: 100vh;
+}
+
 .contact-button, .episode-button {
     background: transparent;
     border: 1px $white solid;
@@ -15,7 +23,19 @@
 }
 
 .container {
+    position: relative;
+    background-color: $white;
+    border: $border-width-small solid black;
+    margin: $border-width-small;
+    margin-bottom: 0;
     overflow-x: hidden;
+    z-index: 1;
+    section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $white;
+    }
 }
 
 .content-container {
@@ -51,7 +71,54 @@
     }
 }
 
+.social-contact-svg {
+    &.reverse-colours {
+        .icon-background {
+            fill: $secondary-colour;
+        }
+        &:hover {
+            .icon-background {
+                fill: darken($secondary-colour, 15%);
+            }
+        }
+    }
+    &:not(.reverse-colours) {
+        .icon-background {
+            fill: $primary-colour;
+        }
+        &:hover {
+            .icon-background {
+                fill: darken($primary-colour, 15%);
+            }
+        }
+    }
+    .icon-background {
+        fill: $primary-colour;
+    }
+}
+
+@media (min-width: $breakpoint-small-medium) {
+    h2 {
+        font-size: 2rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: $breakpoint-medium) {
+    h2 {
+        font-size: 3rem;
+    }
+    .content-screen {
+        padding: 1rem 0 10rem;
+    }
+}
+
 @media (min-width: $breakpoint-large) {
+    .content-screen {
+        padding: 3rem 0 12rem;
+    }
     .content-container {
         flex-direction: row;
         align-items: center;
@@ -65,6 +132,17 @@
 }
 
 @media (min-width: $breakpoint-xlarge) {
+    h2 {
+        font-size: 4rem;
+    }
+    .content-screen {
+        padding: 3rem 0 15rem;
+    }
+    .container {
+        border-width: $border-width-large;
+        margin: $border-width-large;
+        margin-bottom: 0;
+    }
     .content-container {
         .content-container--text {
             h2 {

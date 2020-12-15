@@ -1,10 +1,9 @@
 <template>
     <div>
         <div class="container">
-            <hero></hero>
-            <aboutMe :observer="observer"></aboutMe>
-            <dayJob :observer="observer"></dayJob>
-            <happyDev></happyDev>
+            <hero class="full-screen"></hero>
+            <aboutMe class="content-screen" :observer="observer"></aboutMe>
+            <dayJob class="content-screen" :observer="observer"></dayJob>
             <contactForm></contactForm>
         </div>
         <site-footer></site-footer>
@@ -15,7 +14,6 @@
 import AboutMe from '~/components/AboutMe.vue'
 import ContactForm from '~/components/ContactForm.vue'
 import DayJob from '~/components/DayJob.vue'
-import HappyDev from '~/components/HappyDev.vue'
 import Hero from '~/components/Hero.vue'
 import SiteFooter from '~/components/Footer.vue'
 
@@ -24,7 +22,6 @@ export default {
         AboutMe,
         ContactForm,
         DayJob,
-        HappyDev,
         Hero,
         SiteFooter
     },

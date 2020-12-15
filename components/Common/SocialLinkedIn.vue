@@ -1,6 +1,7 @@
 <template>
     <svg
         :class="{ 'reverse-colours': isOnPrimaryColour }"
+        class="social-contact-svg"
         fill="none"
         height="50"
         role="img"
@@ -44,27 +45,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss" scoped>
-@import '~/assets/scss/colours.scss';
-
-svg {
-    &.reverse-colours {
-        &:hover {
-            .icon-background {
-                fill: $tertiary-colour;
-            }
-        }
-    }
-    &:not(.reverse-colours) {
-        &:hover {
-            .icon-background {
-                fill: $primary-colour;
-            }
-        }
-    }
-    .icon-background {
-        fill: $secondary-colour;
-    }
-}
-</style>

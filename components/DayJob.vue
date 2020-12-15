@@ -1,43 +1,39 @@
+/* eslint-disable prettier/prettier */
 <template>
-    <section class="day-job content-container">
-        <div class="day-job--content animate-element">
-            <div class="content-container--text">
-                <h2>Day Job.</h2>
-                <p>I have worked at Blue Bay Travel since November 2012.</p>
-                <p>
-                    <!-- eslint-disable-next-line prettier/prettier -->
-                    I manage a small team of developers and we are responsible for four customer facing websites and a number of internal web applications.
-                </p>
-                <p>
-                    <!-- eslint-disable-next-line prettier/prettier -->
-                    I focus on improving the user experience and product performance on all of our projects. By designing and developing new features that concider both the customer and employee journeys.
-                </p>
+    <section class="day-job">
+        <div class="day-job--background"></div>
+        <div class="day-job--container">
+            <div class="day-job--container--left">
+                <img
+                    src="../assets/images/laptop-phone.jpg"
+                    alt="Laptop and mobile example screenshots"
+                    class="animate-element"
+                    width="300px"
+                />
+                <h2 class="animate-element">Blue Bay Travel</h2>
+                <img
+                    src="../assets/images/mac.jpg"
+                    alt="iMac example screenshot"
+                    class="animate-element"
+                    width="300px"
+                />
             </div>
-            <div class="content-container--list">
-                <h3>Typical Stack...</h3>
-                <ul>
-                    <li v-for="(items, type) in stack" :key="type">
-                        {{ createListItem(type, items) }}
-                    </li>
-                </ul>
+            <div class="day-job--container--right">
+                <p class="animate-element">
+                    <!-- eslint-disable-next-line prettier/prettier -->
+                    I have worked at Blue Bay Travel since November 2012. Progressing from Junior to Lead Developer.
+                </p>
+                <p class="animate-element">
+                    <!-- eslint-disable-next-line prettier/prettier -->
+                    I manage a team of developers and we are responsible for four customer facing websites and a number of internal web applications. Including a custom CRM, custom reservations system and a custom pricing system that powers the websites and our internal applications with millions of holiday prices everyday.
+                </p>
+                <p class="animate-element">
+                    <!-- eslint-disable-next-line prettier/prettier -->
+                    Outside of my project management and team responsibilities, I focus on improving the user experience and product performance on all of our projects. By designing and developing new features that concider both the customer and employee journeys.
+                </p>
             </div>
         </div>
-        <div class="day-job--images animate-element">
-            <div class="day-job-images--one">
-                <img
-                    src="../assets/images/warehouse.jpg"
-                    alt="Caribbean Warehouse Screenshot"
-                />
-                <div class="image-background--secondary right-align"></div>
-            </div>
-            <div class="day-job-images--two">
-                <img
-                    src="../assets/images/xclusivity.jpg"
-                    alt="Xclusivity Screenshot"
-                />
-                <div class="image-background--secondary right-align"></div>
-            </div>
-        </div>
+        <!-- animate-element -->
     </section>
 </template>
 
@@ -45,38 +41,7 @@
 import ObserverMixin from '~/mixins/observer.js'
 
 export default {
-    mixins: [ObserverMixin],
-    data() {
-        return {
-            websiteLinks: {
-                warehouse: 'https://caribbeanwarehouse.co.uk/',
-                xclsuivity: 'https://xclusivity.co.uk/'
-            },
-            stack: {
-                languages: ['JavaScript', 'PHP', 'HTML', 'CSS'],
-                frameworks: ['Vue.js', 'Laravel'],
-                database: ['MySQL']
-            }
-        }
-    },
-    methods: {
-        capitalise(value) {
-            if (!value) return ''
-            value = value.toString()
-            return value.charAt(0).toUpperCase() + value.slice(1)
-        },
-        createListItem(type, items) {
-            return `${this.capitalise(type)}: ${this.stringifyStack(items)}`
-        },
-        stringifyStack(items) {
-            if (items.length > 1) {
-                return [items.slice(0, -1).join(', '), items.slice(-1)[0]].join(
-                    items.length < 2 ? '' : ' and '
-                )
-            }
-            return items
-        }
-    }
+    mixins: [ObserverMixin]
 }
 </script>
 
@@ -85,90 +50,87 @@ export default {
 @import '~/assets/scss/settings.scss';
 
 .day-job {
-    padding: 1rem 1rem 3rem 1rem;
-}
-
-.day-job--content {
-    padding: 1rem;
-    .content-container--list {
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-    }
-}
-
-.day-job--images {
-    display: none;
     position: relative;
-    .day-job-images--one,
-    .day-job-images--two {
-        position: relative;
-        margin-bottom: 1.25rem;
-        img {
-            position: relative;
-            border-radius: 0.625rem;
-            width: 100%;
-        }
-    }
-    .day-job-images--one {
-        img {
-            z-index: 1;
-        }
-        .image-background--secondary {
-            z-index: 0;
-        }
-    }
-    .day-job-images--two {
-        position: absolute;
-        top: 150px;
-        right: -50px;
-        img {
-            z-index: 4;
-        }
-        .image-background--secondary {
-            z-index: 3;
-        }
+    color: $secondary-colour;
+}
+
+.day-job--container {
+    padding: 0 1rem;
+}
+
+.day-job--background {
+    display: none;
+    background-color: $primary-colour;
+    z-index: 1;
+}
+
+.day-job--container--left {
+    z-index: 2;
+    img {
+        display: none;
     }
 }
 
-@media (min-width: $breakpoint-large) {
-    .day-job {
-        padding: 0rem 2rem 24.375rem 2rem;
+.day-job--container--right {
+    z-index: 1;
+}
+
+@media (orientation: portrait) and (min-width: $breakpoint-medium),
+    (orientation: landscape) and (min-width: $breakpoint-large) {
+    .day-job--background {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 30%;
+        right: 0;
+        top: 0;
     }
 
-    .day-job--content {
-        order: 2;
-        .content-container--text {
-            max-width: 400px;
+    .day-job--container {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        padding: 0 3rem;
+    }
+
+    .day-job--container--left {
+        h2 {
+            margin: 0.5rem 0;
+        }
+        img {
+            display: block;
         }
     }
 
-    .day-job--images {
-        display: block;
-        order: 1;
+    .day-job--container--right {
+        background-color: $primary-colour;
+        color: $white;
+        padding: 1rem;
     }
 }
 
 @media (min-width: $breakpoint-xlarge) {
-    .day-job--content {
-        .content-container--text {
-            max-width: 500px;
+    .day-job--background {
+        left: 22%;
+    }
+    .day-job--container {
+        max-width: 1400px;
+    }
+    .day-job--container--left {
+        img {
+            width: 450px;
         }
     }
-    .day-job--images {
-        .day-job-images--two {
-            right: -100px;
-        }
+    .day-job--container--right {
+        font-size: 1.25rem;
+        max-width: 700px;
+        padding-left: 4rem;
     }
 }
 
 @media (min-width: $breakpoint-xxlarge) {
-    .day-job--content {
-        margin-left: 15rem;
-        .content-container--text {
-            max-width: 550px;
-        }
+    .day-job--background {
+        left: 30%;
     }
 }
 </style>
