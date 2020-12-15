@@ -4,12 +4,22 @@
             <div class="hero--container--images">
                 <div class="images--home">
                     <div id="profileImage" class="images--home--profile">
-                        <img
-                            src="../assets/images/profile.jpg"
-                            alt="Alex's profile Picture"
-                            height="202"
-                            width="200"
-                        />
+                        <picture class="images--home--profile--picture">
+                            <source
+                                media="(max-width: 639px)"
+                                srcset="../assets/images/profile-small.jpg"
+                            />
+                            <source
+                                media="(min-width: 640px)"
+                                srcset="../assets/images/profile.jpg"
+                            />
+                            <img
+                                src="../assets/images/profile.jpg"
+                                alt="Alex's profile Picture"
+                                height="260"
+                                width="203"
+                            />
+                        </picture>
                     </div>
                     <div id="etihadImage" class="images--home--etihad">
                         <img
@@ -151,9 +161,9 @@ export default {
             height: 120px;
             width: 120px;
         }
-        .images--home--profile img {
-            height: 253px;
-            width: 250px;
+        .images--home--profile--picture img {
+            height: 315px;
+            width: 247px;
         }
     }
     .images--america {
@@ -180,9 +190,9 @@ export default {
             height: 130px;
             width: 130px;
         }
-        .images--home--profile img {
-            height: 281px;
-            width: 277px;
+        .images--home--profile--picture img {
+            height: 350px;
+            width: 274px;
         }
     }
     .images--america {
@@ -209,10 +219,10 @@ export default {
             height: 160px;
             width: 160px;
         }
-        .images--home--profile img {
-            height: 409px;
+        .images--home--profile--picture img {
+            height: 515px;
             margin-bottom: 3rem;
-            width: 404px;
+            width: 403px;
         }
     }
     .images--america {
@@ -241,6 +251,13 @@ export default {
         align-items: baseline;
         flex-direction: row;
     }
+
+    .images--home {
+        .images--home--profile--picture img {
+            height: 220px;
+            width: 172px;
+        }
+    }
 }
 
 @media (orientation: landscape) and (max-width: $breakpoint-large - 1) {
@@ -267,9 +284,9 @@ export default {
     .images--home {
         .images--home--profile {
             margin-bottom: -2rem;
-            img {
-                height: 281px;
-                width: 277px;
+            .images--home--profile--picture img {
+                height: 280px;
+                width: 219px;
             }
         }
     }
@@ -290,10 +307,10 @@ export default {
             height: 160px;
             width: 160px;
         }
-        .images--home--profile img {
-            height: 409px;
+        .images--home--profile--picture img {
+            height: 430px;
             margin-bottom: 3rem;
-            width: 404px;
+            width: 337px;
         }
     }
     .images--america {
@@ -345,10 +362,10 @@ export default {
             height: 200px;
             width: 200px;
         }
-        .images--home--profile img {
+        .images--home--profile--picture img {
             height: 511px;
             margin-bottom: 0;
-            width: 504px;
+            width: 400px;
         }
     }
 
