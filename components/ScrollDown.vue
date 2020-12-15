@@ -32,7 +32,7 @@ export default {}
 .scroll-down-animation {
     display: none;
     position: absolute;
-    bottom: 10%;
+    bottom: 2rem;
     height: 40px;
     left: 0;
     margin-left: auto;
@@ -44,13 +44,8 @@ export default {}
     }
 }
 
-// @media (orientation: portrait) and (min-width: $breakpoint-medium),
-//     (orientation: landscape) and (min-width: $breakpoint-large) {
-//     .scroll-down-animation {
-//         }
-// }
-
-@media (min-width: $breakpoint-large) {
+@media (orientation: portrait) and (min-width: $breakpoint-large),
+    (orientation: landscape) and (min-width: $breakpoint-xlarge) {
     .scroll-down-animation {
         display: block;
     }
