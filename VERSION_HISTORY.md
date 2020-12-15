@@ -33,3 +33,21 @@ I then made some breakpoint styles changes. As some things bugged me from how my
 I finally added the contact form that I designed for on my initial challenge.
 
 [![Image from Gyazo](https://i.gyazo.com/828813f626e979d9ba5477d02d4ac44e.png)](https://gyazo.com/828813f626e979d9ba5477d02d4ac44e)
+
+### v1.4.*, v1.5.* and v1.6.*
+
+Over the next six months, I spent a few days trying new things out.
+
+These releases were mostly visual changes but I did fix the contact form as well.
+
+Once I starting throwing in some SVG animations, I knew I had taken this design too far. It didn't make sense any more and the site performance took a hit. So I started to design v2.
+
+### v2.0.0
+
+I had to take a days annual leave and decided it was time to create v2.
+
+I used movie posters from my favourite film (The Thomas Crown Affair, 1968) as inspiration for the design.
+
+The idea was to remove the visual clutter but make a more complex responsive design.
+
+[![Image from Gyazo](https://i.gyazo.com/8a15785ebc1c3847339b7fd24a18a9fd.png)](https://gyazo.com/8a15785ebc1c3847339b7fd24a18a9fd)
