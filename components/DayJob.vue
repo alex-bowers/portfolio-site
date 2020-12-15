@@ -123,6 +123,8 @@ export default {
         }
     }
     .day-job--container--right {
+        font-size: 1.25rem;
+        max-width: 700px;
         padding-left: 4rem;
     }
 }
