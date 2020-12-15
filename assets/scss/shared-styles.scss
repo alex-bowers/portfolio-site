@@ -2,11 +2,11 @@
 @import '~/assets/scss/settings.scss';
 @import '~/assets/scss/animate.scss';
 
+.content-screen {
+    padding: 1rem 0 2rem;
+}
+
 .full-screen {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $white;
     min-height: 100vh;
 }
 
@@ -30,6 +30,12 @@
     margin-bottom: 0;
     overflow-x: hidden;
     z-index: 1;
+    section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $white;
+    }
 }
 
 .content-container {
@@ -104,9 +110,15 @@
     h2 {
         font-size: 3rem;
     }
+    .content-screen {
+        padding: 1rem 0 10rem;
+    }
 }
 
 @media (min-width: $breakpoint-large) {
+    .content-screen {
+        padding: 3rem 0 12rem;
+    }
     .content-container {
         flex-direction: row;
         align-items: center;
@@ -122,6 +134,9 @@
 @media (min-width: $breakpoint-xlarge) {
     h2 {
         font-size: 4rem;
+    }
+    .content-screen {
+        padding: 3rem 0 15rem;
     }
     .container {
         border-width: $border-width-large;

@@ -83,7 +83,7 @@ export default {
         bottom: 0;
         left: 30%;
         right: 0;
-        top: 25%;
+        top: 0;
     }
 
     .day-job--container {
@@ -112,7 +112,6 @@ export default {
 @media (min-width: $breakpoint-xlarge) {
     .day-job--background {
         left: 22%;
-        top: 30%;
     }
     .day-job--container {
         max-width: 1400px;

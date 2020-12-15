@@ -2,8 +2,8 @@
     <div>
         <div class="container">
             <hero class="full-screen"></hero>
-            <aboutMe class="full-screen" :observer="observer"></aboutMe>
-            <dayJob class="full-screen" :observer="observer"></dayJob>
+            <aboutMe class="content-screen" :observer="observer"></aboutMe>
+            <dayJob class="content-screen" :observer="observer"></dayJob>
             <contactForm></contactForm>
         </div>
         <site-footer></site-footer>
