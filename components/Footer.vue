@@ -41,7 +41,7 @@ export default {
 @media (min-width: $breakpoint-xlarge) {
     .footer {
         border-width: $border-width-large;
-        margin: 0 $border-width-large;
+        margin: 0 $border-width-large $border-width-large;
     }
 }
 </style>
