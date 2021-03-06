@@ -26,7 +26,7 @@ export default {
     background-color: $secondary-colour;
     border: $border-width-small solid black;
     border-top: none;
-    margin: 0 $border-width-small;
+    margin: 0 $border-width-small $border-width-small;
     padding: 5rem 2rem;
 }
 
