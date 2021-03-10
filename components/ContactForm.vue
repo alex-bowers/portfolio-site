@@ -97,8 +97,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
     data() {
         return {
@@ -136,7 +134,7 @@ export default {
             }
 
             this.isEmailSending = true
-            axios
+            this.$axios
                 .post('https://api.emailjs.com/api/v1.0/email/send', {
                     service_id: this.enviromentVariables.service,
                     template_id: this.enviromentVariables.template,
