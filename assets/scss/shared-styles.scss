@@ -2,6 +2,16 @@
 @import '~/assets/scss/settings.scss';
 @import '~/assets/scss/animate.scss';
 
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    overflow: auto;
+}
+
 .content-screen {
     padding: 1rem 0 2rem;
 }
