@@ -4,7 +4,10 @@
             <div class="about-me--container--column animate-element">
                 <h2>About Me</h2>
                 <ul class="numbered-list">
-                    <li v-for="(item, itemIndex) in tldr" :key="itemIndex">
+                    <li
+                        v-for="(item, itemIndex) in tldrSection"
+                        :key="itemIndex"
+                    >
                         {{ item }}
                     </li>
                 </ul>
@@ -96,14 +99,21 @@ export default {
                 'Languages: JavaScript, PHP, HTML and CSS',
                 'Frameworks: Vue.js and Laravel',
                 'Database: MySQL'
-            ],
-            tldr: [
+            ]
+        }
+    },
+    computed: {
+        tldrSection() {
+            return [
                 'Full Stack Developer',
                 'Problem Solver',
-                '8 years commercial experience',
-                'Vue.js enthusiast',
-                'Loves watching sports'
+                `${this.yearsDeveloping} years commercial experience`,
+                'Loves watching sports',
+                'Has a stammer'
             ]
+        },
+        yearsDeveloping() {
+            return new Date().getFullYear() - 2012
         }
     }
 }
