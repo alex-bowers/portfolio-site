@@ -52,7 +52,10 @@
             <div class="hero--container--text">
                 <h1>Alex Bowers</h1>
                 <span class="text--quote">
-                    “I'm the Lead Developer at Blue Bay Travel.”
+                    “Software Development Manager
+                </span>
+                <span class="text--quote">
+                    at Blue Bay Travel.”
                 </span>
                 <span>Located in Stoke-on-Trent, UK.</span>
             </div>
