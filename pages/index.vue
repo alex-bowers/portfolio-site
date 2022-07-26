@@ -3,7 +3,6 @@
         <div class="container">
             <hero class="full-screen"></hero>
             <aboutMe class="content-screen" :observer="observer"></aboutMe>
-            <dayJob class="content-screen" :observer="observer"></dayJob>
             <contactForm></contactForm>
         </div>
         <site-footer></site-footer>
@@ -13,7 +12,6 @@
 <script>
 import AboutMe from '~/components/AboutMe.vue'
 import ContactForm from '~/components/ContactForm.vue'
-import DayJob from '~/components/DayJob.vue'
 import Hero from '~/components/Hero.vue'
 import SiteFooter from '~/components/Footer.vue'
 
@@ -21,7 +19,6 @@ export default {
     components: {
         AboutMe,
         ContactForm,
-        DayJob,
         Hero,
         SiteFooter
     },
