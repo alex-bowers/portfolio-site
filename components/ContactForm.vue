@@ -118,33 +118,17 @@ export default {
     computed: {
         buttonText() {
             return this.isEmailSending ? 'Email is sending' : 'Send'
-        },
-        enviromentVariables() {
-            return {
-                service: process.env.EMAIL_SERVICE,
-                template: process.env.EMAIL_TEMPLATE,
-                user: process.env.EMAIL_USER
-            }
         }
     },
     methods: {
-        sendEmail(e) {
+        sendEmail() {
             if (this.formData.name === '' || this.formData.email === '') {
                 return false
             }
 
             this.isEmailSending = true
             this.$axios
-                .post('https://api.emailjs.com/api/v1.0/email/send', {
-                    service_id: this.enviromentVariables.service,
-                    template_id: this.enviromentVariables.template,
-                    user_id: this.enviromentVariables.user,
-                    template_params: {
-                        user_name: this.formData.name,
-                        user_email: this.formData.email,
-                        message: this.formData.message
-                    }
-                })
+                .post('/.netlify/functions/contact-form-mail', this.formData)
                 .then(() => {
                     this.hasUserTriedToSentEmail = true
                     this.emailSentStatus = 'success'
