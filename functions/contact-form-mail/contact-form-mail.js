@@ -1,37 +1,33 @@
 require('dotenv').config()
 
-const { MG_API_KEY, MG_DOMAIN, MG_HOST, TO_EMAIL_ADDRESS } = process.env
-const mailgun = require('mailgun-js')({ apiKey: MG_API_KEY, domain: MG_DOMAIN, url: MG_HOST})
+const client = require('@sendgrid/mail')
+const {
+  SENDGRID_API_KEY,
+  SENDGRID_FROM_EMAIL,
+  SENDGRID_TO_EMAIL
+} = process.env
 
-exports.handler = async (event) => {
-    if (event.httpMethod !== 'POST') {
-        return {
-            statusCode: 405,
-            body: 'Method Not Allowed',
-            headers: { 'Allow': 'POST' }
-        }
-    }
+exports.handler = async function (event) {
+    const formData = JSON.parse(event.body)
 
-    const data = JSON.parse(event.body)
-
-    if (!data.message || !data.name || !data.email) {
+    if (!formData.message || !formData.name || !formData.email) {
         return { statusCode: 422, body: 'Name, email, and message are required.' }
     }
 
-    const mailgunData = {
-        from: data.email,
-        to: TO_EMAIL_ADDRESS,
-        'h:Reply-To': data.email,
-        subject: `New mail from ${data.name}`,
+    client.setApiKey(SENDGRID_API_KEY);
+
+    const data = {
+        to: SENDGRID_TO_EMAIL,
+        from: SENDGRID_FROM_EMAIL,
+        subject: `New mail from ${formData.name}`,
         html: `
-            <h4>Email from ${data.name} ${data.email}</h4>
-            <p>${data.message}</p>
+            <h4>Email from ${formData.name} ${formData.email}</h4>
+            <p>${formData.message}</p>
         `
     }
 
     try {
-        await mailgun.messages().send(mailgunData)
-
+        await client.send(data);
         return {
             statusCode: 200,
             body: 'Your message was sent successfully!'

@@ -14,9 +14,9 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/dotenv": "~1.4.1",
+    "@sendgrid/mail": "^7.7.0",
     "babel-eslint": "^10.1.0",
     "dotenv": "^16.0.2",
-    "mailgun-js": "^0.22.0",
     "nuxt": "~2.15.8"
   },
   "devDependencies": {

@@ -4,7 +4,6 @@
   command = "yarn generate"
   publish = "dist"
   functions = 'functions'
-
 [[headers]]
   for = "/*"
     [headers.values]
