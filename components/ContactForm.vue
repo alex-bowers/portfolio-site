@@ -128,7 +128,10 @@ export default {
 
             this.isEmailSending = true
             this.$axios
-                .post('/.netlify/functions/contact-form-mail', this.formData)
+                .post(
+                    `${process.env.DOMAIN}/.netlify/functions/contact-form-mail`,
+                    this.formData
+                )
                 .then(() => {
                     this.hasUserTriedToSentEmail = true
                     this.emailSentStatus = 'success'

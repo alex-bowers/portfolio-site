@@ -71,8 +71,6 @@ export default {
         /*
          ** Environment variables that are used in my components.
          */
-        EMAIL_SERVICE: process.env.EMAIL_SERVICE,
-        EMAIL_TEMPLATE: process.env.EMAIL_TEMPLATE,
-        EMAIL_USER: process.env.EMAIL_USER
+        DOMAIN: process.env.DOMAIN
     }
 }
