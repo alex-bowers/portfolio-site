@@ -3,7 +3,7 @@
         <div class="about-me--container">
             <div class="about-me--container--column animate-element">
                 <h2>About Me</h2>
-                <ul class="numbered-list">
+                <ul class="dash-list">
                     <li
                         v-for="(item, itemIndex) in tldrSection"
                         :key="itemIndex"
@@ -20,7 +20,7 @@
                             v-for="(item, itemIndex) in qualifications"
                             :key="itemIndex"
                         >
-                            - {{ item }}
+                            {{ item }}
                         </li>
                     </ul>
                 </div>
@@ -28,7 +28,7 @@
                     <h3>Typical Stack</h3>
                     <ul class="dash-list">
                         <li v-for="(item, itemIndex) in stack" :key="itemIndex">
-                            - {{ item }}
+                            {{ item }}
                         </li>
                     </ul>
                 </div>
@@ -42,7 +42,7 @@
                             :key="itemIndex"
                             class="row--category--link"
                         >
-                            - <a :href="item.link">{{ item.name }}</a>
+                            <a :href="item.link">{{ item.name }}</a>
                         </li>
                     </ul>
                 </div>
@@ -54,7 +54,7 @@
                             :key="itemIndex"
                             class="row--category--link"
                         >
-                            - <a :href="item.link">{{ item.name }}</a>
+                            <a :href="item.link"> {{ item.name }}</a>
                         </li>
                     </ul>
                 </div>
@@ -144,6 +144,10 @@ ul {
 .dash-list {
     list-style-type: none;
     padding-left: 0;
+    li::before {
+        content: "-";
+        margin-right: 0.25rem;
+    }
     .row--category--link + .row--category--link {
         margin-top: 0.5rem;
     }
