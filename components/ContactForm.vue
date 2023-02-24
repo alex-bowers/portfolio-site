@@ -171,7 +171,7 @@ export default {
 .contact-me--result {
     text-align: center;
     background-color: $primary-colour;
-    color: $white;
+    color: $secondary-colour;
     padding: 2rem 1rem;
     border-radius: 5px;
     margin-bottom: 5rem;
@@ -180,15 +180,16 @@ export default {
 .contact-me--form {
     display: flex;
     flex-direction: column;
-    color: $white;
+    color: $secondary-colour;
     h2 {
         margin-top: 0;
     }
     .contact-me--form--button {
         text-align: right;
         button {
-            border-color: $white;
-            color: $white;
+            border-color: $secondary-colour;
+            color: $secondary-colour;
+            font-weight: 600;
             width: 185px;
             &:hover {
                 border-color: darken($white, 15%);
@@ -196,8 +197,8 @@ export default {
             }
             &.contact-button--loading {
                 &:hover {
-                    border-color: $white;
-                    color: $white;
+                    border-color: $secondary-colour;
+                    color: $secondary-colour;
                 }
             }
         }
@@ -212,7 +213,7 @@ export default {
     input,
     textarea {
         border: 0;
-        color: $white;
+        color: $secondary-colour;
         padding: 3px 0;
         border-bottom: 2px solid $white;
         box-shadow: none;
@@ -232,7 +233,8 @@ export default {
         resize: vertical;
     }
     label {
-        opacity: 0.5;
+        color: black;
+        opacity: 0.7;
         pointer-events: none;
         position: absolute;
         left: 0.5rem;

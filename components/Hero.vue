@@ -44,7 +44,7 @@
                             src="../assets/images/gillette.jpg"
                             alt="Gillette Stadium"
                             height="100"
-                            width="75"
+                            width="67"
                         />
                     </div>
                 </div>
@@ -145,7 +145,7 @@ export default {
     flex-direction: column;
     background-color: $primary-colour;
     border: $border-width-small solid $white;
-    color: $white;
+    color: $secondary-colour;
     padding: 2rem;
     width: 220px;
     h1 {
