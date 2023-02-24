@@ -1,7 +1,7 @@
 [dev]
-   command = "yarn dev"
+   command = "npm run dev"
 [build]
-  command = "yarn generate"
+  command = "npm run generate"
   publish = "dist"
   functions = 'functions'
 [[headers]]
