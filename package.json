@@ -1,34 +1,19 @@
 {
   "name": "portfolio-website",
-  "version": "2.4.2",
+  "version": "3.0.0",
   "description": "My Portfolio",
   "author": "Alex Bowers",
+  "type": "module",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
-  },
-  "dependencies": {
-    "@nuxtjs/axios": "^5.13.6",
-    "@nuxtjs/dotenv": "~1.4.1",
-    "@sendgrid/mail": "^7.7.0",
-    "babel-eslint": "^10.1.0",
-    "dotenv": "^16.0.2",
-    "nuxt": "~2.15.8"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.2.3",
-    "@nuxtjs/eslint-config": "^8.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
-    "eslint": "^8.7.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-nuxt": "^3.1.0",
-    "eslint-plugin-prettier": "^3.3.2",
-    "node-sass": "^6.0.1",
-    "prettier": "^2.5.1",
-    "sass-loader": "^10.2.1"
+    "vite": "^5.0.8"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.0"
   }
 }
