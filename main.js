@@ -70,48 +70,17 @@ document.getElementById('contactForm')
     })
 
 async function sendEmail(name, email, message) {
-    // const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
-    //     method: 'POST',
-    //     mode: 'no-cors',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       'Authorization': `Bearer ${import.meta.env.VITE_SENDGRID_API_KEY}`,
-    //     },
-    //     body: JSON.stringify({
-    //         "personalizations": [{
-    //             "to": [{
-    //                 "email": import.meta.env.VITE_SENDGRID_TO_EMAIL
-    //             }]
-    //         }],
-    //         "from": {"email": import.meta.env.VITE_SENDGRID_FROM_EMAIL},
-    //         "subject": `New mail from ${name}`,
-    //         "content": [
-    //             {"type": "text/plain", "value": message}
-    //         ]
-    //     })
-    // })
-    // return response.json()
-
-    const {
-      VITE_SENDGRID_API_KEY,
-      VITE_SENDGRID_FROM_EMAIL,
-      VITE_SENDGRID_TO_EMAIL
-    } = import.meta.env
-
-    sgMail.setApiKey(VITE_SENDGRID_API_KEY)
-
-    const data = {
-        to: VITE_SENDGRID_TO_EMAIL,
-        from: VITE_SENDGRID_FROM_EMAIL,
-        subject: `New mail from ${name}`,
-        html: `
-            <h4>Email from ${name} ${email}</h4>
-            <p>${message}</p>
-        `
-    }
-
     try {
-        await sgMail.send(data)
+        const response = await fetch(`${import.meta.env.VITE_DOMAIN}/.netlify/functions/contact-form-mail`, {
+            method: 'POST',
+            body: JSON.stringify({
+                name, email, message
+            })
+        })
+
+        const result = await response.json()
+        console.log(result);
+
         return {
             statusCode: 200,
             message: {
