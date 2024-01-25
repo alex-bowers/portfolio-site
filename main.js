@@ -70,65 +70,73 @@ document.getElementById('contactForm')
     })
 
 async function sendEmail(name, email, message) {
-    // const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
-    //     method: 'POST',
-    //     mode: 'no-cors',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       'Authorization': `Bearer ${import.meta.env.VITE_SENDGRID_API_KEY}`,
-    //     },
-    //     body: JSON.stringify({
-    //         "personalizations": [{
-    //             "to": [{
-    //                 "email": import.meta.env.VITE_SENDGRID_TO_EMAIL
-    //             }]
-    //         }],
-    //         "from": {"email": import.meta.env.VITE_SENDGRID_FROM_EMAIL},
-    //         "subject": `New mail from ${name}`,
-    //         "content": [
-    //             {"type": "text/plain", "value": message}
-    //         ]
-    //     })
-    // })
+    const {
+        VITE_SENDGRID_API_KEY,
+        VITE_SENDGRID_FROM_EMAIL,
+        VITE_SENDGRID_TO_EMAIL
+    } = import.meta.env
+    const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${VITE_SENDGRID_API_KEY}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            'personalizations': [{
+                'to': [{
+                    'email': VITE_SENDGRID_TO_EMAIL
+                }]
+            }],
+            'from': {'email': VITE_SENDGRID_FROM_EMAIL},
+            'subject': `New mail from ${name}`,
+            'content': [
+                {'type': 'text/plain', 'value': message}
+            ]
+        })
+    })
+    console.log(response)
+
+    return {
+        statusCode: 422,
+        message: {
+            body: 'Please try to contact me by using one of my social links below.',
+            title: 'Unfortunately this email has failed to send.'
+        }
+    }
     // return response.json()
 
-    const {
-      VITE_SENDGRID_API_KEY,
-      VITE_SENDGRID_FROM_EMAIL,
-      VITE_SENDGRID_TO_EMAIL
-    } = import.meta.env
 
-    sgMail.setApiKey(VITE_SENDGRID_API_KEY)
+    // sgMail.setApiKey(VITE_SENDGRID_API_KEY)
 
-    const data = {
-        to: VITE_SENDGRID_TO_EMAIL,
-        from: VITE_SENDGRID_FROM_EMAIL,
-        subject: `New mail from ${name}`,
-        html: `
-            <h4>Email from ${name} ${email}</h4>
-            <p>${message}</p>
-        `
-    }
+    // const data = {
+    //     to: VITE_SENDGRID_TO_EMAIL,
+    //     from: VITE_SENDGRID_FROM_EMAIL,
+    //     subject: `New mail from ${name}`,
+    //     html: `
+    //         <h4>Email from ${name} ${email}</h4>
+    //         <p>${message}</p>
+    //     `
+    // }
 
-    try {
-        await sgMail.send(data)
-        return {
-            statusCode: 200,
-            message: {
-              body: 'Thank you for contacting me.',
-              title: 'I will reply as soon as I can.'
-            }
-        }
-    } catch (error) {
-        return {
-            statusCode: 422,
-            error,
-            message: {
-              body: 'Please try to contact me by using one of my social links below.',
-              title: 'Unfortunately this email has failed to send.'
-            }
-        }
-    }
+    // try {
+    //     await sgMail.send(data)
+    //     return {
+    //         statusCode: 200,
+    //         message: {
+    //           body: 'Thank you for contacting me.',
+    //           title: 'I will reply as soon as I can.'
+    //         }
+    //     }
+    // } catch (error) {
+    //     return {
+    //         statusCode: 422,
+    //         error,
+    //         message: {
+    //           body: 'Please try to contact me by using one of my social links below.',
+    //           title: 'Unfortunately this email has failed to send.'
+    //         }
+    //     }
+    // }
 }
 
 function updateContactResultElement(response) {
