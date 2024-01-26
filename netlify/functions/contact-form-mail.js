@@ -14,7 +14,7 @@ export async function handler(event) {
         SENDGRID_TO_EMAIL
     } = process.env
 
-    await fetch(
+    const response = await fetch(
         `${VITE_DOMAIN}/.netlify/functions/emails/contact`,
         {
             headers: {
@@ -34,8 +34,10 @@ export async function handler(event) {
         }
     );
 
+    const data = await response.json()
+
     return {
         statusCode: 200,
-        body: JSON.stringify({ data: 'Email confirmation sent successfully!' }),
+        body: JSON.stringify({ data }),
     };
 }

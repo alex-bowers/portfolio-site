@@ -68,32 +68,31 @@ document.getElementById('contactForm')
     })
 
 async function sendEmail(name, email, message) {
-    try {
-        await fetch(
-            `${import.meta.env.VITE_DOMAIN}/.netlify/functions/contact-form-mail`,
-            {
-                method: "POST",
-                body: JSON.stringify({
-                    name,
-                    email,
-                    message
-                })
-            }
-        );
+    const response = await fetch(
+        `${import.meta.env.VITE_DOMAIN}/.netlify/functions/contact-form-mail`,
+        {
+            method: "POST",
+            body: JSON.stringify({
+                name,
+                email,
+                message
+            })
+        }
+    )
 
+    if (response.ok) {
         return {
             message: {
               body: 'I will reply as soon as I can.',
               title: 'Thank you for contacting me.'
             }
         }
-    } catch (error) {
-        return {
-            error,
-            message: {
-              body: 'Please try to contact me by using one of my social links below.',
-              title: 'Unfortunately this email has failed to send.'
-            }
+    }
+
+    return {
+        message: {
+          body: 'Please try to contact me by using one of my social links below.',
+          title: 'Unfortunately this email has failed to send.'
         }
     }
 }
