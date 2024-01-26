@@ -3,8 +3,9 @@
 [build]
   command = "npm run build"
   publish = "dist"
-  functions = 'functions'
 [[headers]]
   for = "/*"
     [headers.values]
     Access-Control-Allow-Origin = "*"
+[[plugins]]
+  package = "@netlify/plugin-emails"

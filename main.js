@@ -1,5 +1,3 @@
-import sgMail from '@sendgrid/mail'
-
 const contactFormFieldIds = ['nameField', 'emailField', 'messageField'],
     contactFormFieldEvents = ['blur', 'focus']
 const observer = new IntersectionObserver(onElementObserved, {
@@ -71,26 +69,26 @@ document.getElementById('contactForm')
 
 async function sendEmail(name, email, message) {
     try {
-        const response = await fetch(`${import.meta.env.VITE_DOMAIN}/.netlify/functions/contact-form-mail`, {
-            method: 'POST',
-            body: JSON.stringify({
-                name, email, message
-            })
-        })
-
-        const result = await response.json()
-        console.log(result);
+        await fetch(
+            `${import.meta.env.VITE_DOMAIN}/.netlify/functions/contact-form-mail`,
+            {
+                method: "POST",
+                body: JSON.stringify({
+                    name,
+                    email,
+                    message
+                })
+            }
+        );
 
         return {
-            statusCode: 200,
             message: {
-              body: 'Thank you for contacting me.',
-              title: 'I will reply as soon as I can.'
+              body: 'I will reply as soon as I can.',
+              title: 'Thank you for contacting me.'
             }
         }
     } catch (error) {
         return {
-            statusCode: 422,
             error,
             message: {
               body: 'Please try to contact me by using one of my social links below.',
