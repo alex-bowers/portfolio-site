@@ -173,6 +173,7 @@ ul {
 }
 .contact-me--result {
   display: none;
+  text-align: center;
 }
 .contact-me--form {
   display: flex;
@@ -180,6 +181,7 @@ ul {
   color: #142e61;
 }
 .contact-me--form h2 {
+  margin-bottom: 1.5rem;
   margin-top: 0;
 }
 .contact-me--form .contact-me--form--button {
