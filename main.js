@@ -1,5 +1,3 @@
-import sgMail from '@sendgrid/mail'
-
 const contactFormFieldIds = ['nameField', 'emailField', 'messageField'],
     contactFormFieldEvents = ['blur', 'focus']
 const observer = new IntersectionObserver(onElementObserved, {
@@ -70,58 +68,27 @@ document.getElementById('contactForm')
     })
 
 async function sendEmail(name, email, message) {
-    // const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
-    //     method: 'POST',
-    //     mode: 'no-cors',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       'Authorization': `Bearer ${import.meta.env.VITE_SENDGRID_API_KEY}`,
-    //     },
-    //     body: JSON.stringify({
-    //         "personalizations": [{
-    //             "to": [{
-    //                 "email": import.meta.env.VITE_SENDGRID_TO_EMAIL
-    //             }]
-    //         }],
-    //         "from": {"email": import.meta.env.VITE_SENDGRID_FROM_EMAIL},
-    //         "subject": `New mail from ${name}`,
-    //         "content": [
-    //             {"type": "text/plain", "value": message}
-    //         ]
-    //     })
-    // })
-    // return response.json()
-
-    const {
-      VITE_SENDGRID_API_KEY,
-      VITE_SENDGRID_FROM_EMAIL,
-      VITE_SENDGRID_TO_EMAIL
-    } = import.meta.env
-
-    sgMail.setApiKey(VITE_SENDGRID_API_KEY)
-
-    const data = {
-        to: VITE_SENDGRID_TO_EMAIL,
-        from: VITE_SENDGRID_FROM_EMAIL,
-        subject: `New mail from ${name}`,
-        html: `
-            <h4>Email from ${name} ${email}</h4>
-            <p>${message}</p>
-        `
-    }
-
     try {
-        await sgMail.send(data)
+        await fetch(
+            `${import.meta.env.VITE_DOMAIN}/.netlify/functions/contact-form-mail`,
+            {
+                method: "POST",
+                body: JSON.stringify({
+                    name,
+                    email,
+                    message
+                })
+            }
+        );
+
         return {
-            statusCode: 200,
             message: {
-              body: 'Thank you for contacting me.',
-              title: 'I will reply as soon as I can.'
+              body: 'I will reply as soon as I can.',
+              title: 'Thank you for contacting me.'
             }
         }
     } catch (error) {
         return {
-            statusCode: 422,
             error,
             message: {
               body: 'Please try to contact me by using one of my social links below.',
