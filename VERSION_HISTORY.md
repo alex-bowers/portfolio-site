@@ -51,3 +51,10 @@ I used movie posters from my favourite film (The Thomas Crown Affair, 1968) as i
 The idea was to remove the visual clutter but make a more complex responsive design.
 
 [![Image from Gyazo](https://i.gyazo.com/8a15785ebc1c3847339b7fd24a18a9fd.png)](https://gyazo.com/8a15785ebc1c3847339b7fd24a18a9fd)
+
+### v3.0.0
+It's been a few years and I wanted to refresh my site.
+
+I kept getting notifications about outdated dependencies and I didn't need any of them. Previously, my site was built on Nuxt and that was just because I wanted to play with it and I had plan to scale my portfolio up.
+
+I decided to keep the style and simply remove Nuxt. This site is now a simple HTML, CSS and JavaScript site. I have used Vite and Netlify functions because I wanted to play with them.
