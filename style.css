@@ -188,10 +188,24 @@ ul {
   text-align: right;
 }
 .contact-me--form .contact-me--form--button button {
+  display: grid;
+  grid-template-areas: "stack";
   border-color: #142e61;
   color: #142e61;
   font-weight: 600;
-  width: 185px;
+}
+.contact-me--form .contact-me--form--button button .contact-button--initial {
+  grid-area: stack;
+}
+.contact-me--form .contact-me--form--button button .contact-button--submitting {
+  visibility: hidden;
+  grid-area: stack;
+}
+.contact-me--form .contact-me--form--button button.loading .contact-button--initial {
+  visibility: hidden;
+}
+.contact-me--form .contact-me--form--button button.loading .contact-button--submitting {
+  visibility: visible;
 }
 .contact-me--form .contact-me--form--button button:hover {
   border-color: #d8d8d8;

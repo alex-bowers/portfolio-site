@@ -59,12 +59,16 @@ document.getElementById('contactForm')
         event.preventDefault()
         const nameValue = document.getElementById('nameField').value,
             emailValue = document.getElementById('emailField').value,
-            messageValue = document.getElementById('messageField').value
+            messageValue = document.getElementById('messageField').value,
+            submitButton = document.getElementById('submitButton')
+
+        submitButton.classList.add('loading')
 
         sendEmail(nameValue, emailValue,  messageValue)
           .then((response) => {
             updateContactResultElement(response)
           })
+          .finally(() => submitButton.classList.remove('loading'))
     })
 
 async function sendEmail(name, email, message) {
