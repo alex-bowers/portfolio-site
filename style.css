@@ -185,7 +185,8 @@ ul {
   margin-top: 0;
 }
 .contact-me--form .contact-me--form--button {
-  text-align: right;
+  display: flex;
+  justify-content: end;
 }
 .contact-me--form .contact-me--form--button button {
   display: grid;
