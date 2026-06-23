@@ -1,6 +1,6 @@
 {
   "name": "portfolio-website",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "My Portfolio",
   "author": "Alex Bowers",
   "type": "module",
@@ -12,7 +12,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^5.0.8"
+    "vite": "^8.0.16"
   },
   "dependencies": {
     "node-fetch": "^3.3.2"
